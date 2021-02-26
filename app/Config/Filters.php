@@ -19,6 +19,8 @@ class Filters extends BaseConfig
 		'csrf'     => CSRF::class,
 		'toolbar'  => DebugToolbar::class,
 		'honeypot' => Honeypot::class,
+		'Adminfilter' => \App\Filters\AdminFilter::class,
+		'SelerFilter' => \App\Filters\SelerFilter::class,
 	];
 
 	/**
@@ -31,10 +33,14 @@ class Filters extends BaseConfig
 		'before' => [
 			// 'honeypot',
 			// 'csrf',
+			'Adminfilter' => ['except' => ['/', 'login', 'index/*', 'index', 'home/*', 'home']],
+			'SelerFilter' => ['except' => ['/', 'login','index/*', 'index', 'home/*', 'home']]
 		],
 		'after'  => [
 			'toolbar',
 			// 'honeypot',
+			'Adminfilter' => ['except' => ['admin', 'admin/*', 'error', '/', 'home', 'home/*','index/*', 'index']],
+			'SelerFilter' => ['except' => ['user', 'user/*', 'error', '/', 'home', 'home/*','index/*', 'index']],
 		],
 	];
 
