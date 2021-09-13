@@ -15,8 +15,7 @@ class Index extends BaseController
 
 	public function index()
 	{
-        d(session()->get());
-		return view('welcome_message');
+		return view('Public/dashboard');
 	}
 	
 	public function login()

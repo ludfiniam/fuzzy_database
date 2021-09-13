@@ -133,7 +133,6 @@ class Admin extends BaseController
 			'activeSeller' => $countSellerActive,
 			'NonactiveSeller' => $countSellerNonActive
 		];
-		d($data);
 		return view('Admin/dashboard');
 	}
 
