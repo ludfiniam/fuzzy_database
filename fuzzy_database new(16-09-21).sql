@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2021 at 06:40 AM
+-- Generation Time: Sep 16, 2021 at 10:12 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -42,9 +42,9 @@ CREATE TABLE `fk_antutu` (
 --
 
 INSERT INTO `fk_antutu` (`id`, `kd_rules`, `ket_status`, `batas_bawah`, `batas_tengah`, `batas_atas`, `ket_aktif`) VALUES
-(1, 2, 'Kecil', 10000, 0, 90000, 'true'),
-(2, 3, 'Sedang', 80000, 200000, 320000, 'true'),
-(3, 1, 'Besar', 300000, 0, 500000, 'true'),
+(1, 2, 'Kecil', 10000, 0, 60000, 'true'),
+(2, 3, 'Sedang', 50000, 100000, 120000, 'true'),
+(3, 1, 'Besar', 110000, 0, 500000, 'true'),
 (4, 1, '', 0, 0, 0, 'false'),
 (5, 1, '', 0, 0, 0, 'false');
 
@@ -285,11 +285,13 @@ CREATE TABLE `nilai_fk_antutu` (
 --
 
 INSERT INTO `nilai_fk_antutu` (`id`, `id_smartphone`, `keanggotaan1`, `keanggotaan2`, `keanggotaan3`, `keanggotaan4`, `keanggotaan5`) VALUES
-(2, 3, 0, 0.815867, 0, 0, 0),
-(3, 9, 0.973463, 0, 0, 0, 0),
-(4, 13, 0.163875, 0, 0, 0, 0),
-(5, 16, 0, 0, 0.13267, 0, 0),
-(7, 18, 0, 0.369375, 0, 0, 0);
+(1, 3, 0, 0, 0.174113, 0, 0),
+(2, 9, 0.95754, 0, 0, 0, 0),
+(3, 13, 0, 0.5378, 0, 0, 0),
+(4, 16, 0, 0, 0.555215, 0, 0),
+(5, 18, 0, 0, 0.424808, 0, 0),
+(6, 19, 1, 0, 0, 0, 0),
+(7, 20, 0, 0, 0.0580872, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -316,7 +318,8 @@ INSERT INTO `nilai_fk_batrai` (`id`, `id_smartphone`, `keanggotaan1`, `keanggota
 (3, 9, 0, 0.456, 0, 0, 0),
 (4, 13, 0, 0.4, 0, 0, 0),
 (5, 16, 0, 0, 1, 0, 0),
-(7, 18, 0, 0, 0.833333, 0, 0);
+(7, 18, 0, 0, 0.833333, 0, 0),
+(8, 20, 0, 0, 0.41, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -343,7 +346,8 @@ INSERT INTO `nilai_fk_harga` (`id`, `id_smartphone`, `keanggotaan1`, `keanggotaa
 (3, 9, 0.222222, 0.125, 0, 0, 0),
 (4, 13, 0.829861, 0, 0, 0, 0),
 (5, 16, 0, 0, 0.6, 0, 0),
-(7, 18, 0, 0, 0.28, 0, 0);
+(7, 18, 0, 0, 0.28, 0, 0),
+(8, 20, 0.0868056, 0.3125, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -370,7 +374,8 @@ INSERT INTO `nilai_fk_internal` (`id`, `id_smartphone`, `keanggotaan1`, `keanggo
 (3, 9, 0, 0.0322581, 0, 0, 0),
 (4, 13, 0.516129, 0, 0, 0, 0),
 (5, 16, 0, 1, 0, 0, 0),
-(7, 18, 0, 0.225806, 0, 0, 0);
+(7, 18, 0, 0.225806, 0, 0, 0),
+(8, 20, 0, 0.0322581, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -397,7 +402,8 @@ INSERT INTO `nilai_fk_processor` (`id`, `id_smartphone`, `keanggotaan1`, `keangg
 (3, 9, 0, 0.375, 0, 0, 0),
 (4, 13, 0, 0.25, 0, 0, 0),
 (5, 16, 0, 0, 0.7, 0, 0),
-(7, 18, 0, 0.25, 0.4, 0, 0);
+(7, 18, 0, 0.25, 0.4, 0, 0),
+(8, 20, 0, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -424,7 +430,8 @@ INSERT INTO `nilai_fk_ram` (`id`, `id_smartphone`, `keanggotaan1`, `keanggotaan2
 (3, 9, 0, 0.142857, 0, 0, 0),
 (4, 13, 0.666667, 0, 0, 0, 0),
 (5, 16, 0, 0.714286, 0, 0, 0),
-(7, 18, 0, 0.428571, 0, 0, 0);
+(7, 18, 0, 0.428571, 0, 0, 0),
+(8, 20, 0, 0.142857, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -451,7 +458,8 @@ INSERT INTO `nilai_fk_resolusi_kamera` (`id`, `id_smartphone`, `keanggotaan1`, `
 (3, 9, 0.516129, 0, 0, 0, 0),
 (4, 13, 0.516129, 0, 0, 0, 0),
 (5, 16, 0, 0.642857, 0, 0, 0),
-(7, 18, 0, 0.642857, 0, 0, 0);
+(7, 18, 0, 0.642857, 0, 0, 0),
+(8, 20, 0.193548, 0.0178571, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -478,7 +486,8 @@ INSERT INTO `nilai_fk_resolusi_layar` (`id`, `id_smartphone`, `keanggotaan1`, `k
 (3, 9, 0, 0.8, 0, 0, 0),
 (4, 13, 0.25, 0.333333, 0, 0, 0),
 (5, 16, 0, 0, 0.55, 0, 0),
-(7, 18, 0, 0, 0.425, 0, 0);
+(7, 18, 0, 0, 0.425, 0, 0),
+(8, 20, 0, 0.533333, 0.05, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -505,7 +514,8 @@ INSERT INTO `nilai_fk_tahun` (`id`, `id_smartphone`, `keanggotaan1`, `keanggotaa
 (3, 9, 0.777778, 0, 0, 0, 0),
 (4, 13, 1, 0, 0, 0, 0),
 (5, 16, 0, 1, 0, 0, 0),
-(7, 18, 0, 0.5, 0, 0, 0);
+(7, 18, 0, 0.5, 0, 0, 0),
+(8, 20, 0, 0.5, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -555,7 +565,7 @@ CREATE TABLE `t_account` (
 
 INSERT INTO `t_account` (`id`, `full_name`, `email`, `username`, `password`, `telp`, `hak_akses`, `address`, `active_account`, `image_profile`) VALUES
 (1, 'Smartphoneku', 'ludfiniam@gmail.com', 'ludfiniam', 'admin', '08985222402', 1, 'Langon RT 09 RW 04, Tahunan, Jepara, Jawa Tengah, Indonesia', 'active', '1615617322_3668161d1a021ce31e0f.jpg'),
-(2, 'Sindikat Center Phone', 'user1@gmail.com', 'user1', 'user1', '089922110909', 2, 'Ngentak Sapen no.405, Depok, Sleman, Yogyakarta', 'active', '1615443596_3b223196d1c2c75c7a01.jpeg'),
+(2, 'Sindikat Center Phone', 'user1@gmail.com', 'user1', 'user1', '089922110909', 2, 'Ngentak Sapen no.405, Depok, Sleman, Yogyakarta', 'active', '1615443596_3b223196d1c2c75c7a01.jpg'),
 (4, 'Ludfiniam Phone cabang Kudus', 'ludfiniam02@gmail.com', 'ludfiniam02', 'admin123', '08908017333', 2, 'Kudus Menara', 'active', 'default.jpg'),
 (5, 'Ludfiniam Phone cabang Semaran', 'ludfiniam03@gmail.com', 'ludfiniam03', '12345', '08908017444', 2, 'Ungarang Semarang', 'active', 'default.jpg');
 
@@ -655,20 +665,24 @@ INSERT INTO `t_jenis_layar` (`id`, `nama_jenis_layar`) VALUES
 
 CREATE TABLE `t_jenis_merek` (
   `id` int(11) NOT NULL,
-  `nama_merek` varchar(20) NOT NULL
+  `slug` varchar(25) NOT NULL,
+  `nama_merek` varchar(20) NOT NULL,
+  `logo_img` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `t_jenis_merek`
 --
 
-INSERT INTO `t_jenis_merek` (`id`, `nama_merek`) VALUES
-(1, 'SAMSUNG'),
-(2, 'XIAOMI'),
-(3, 'OPPO'),
-(4, 'Realme'),
-(5, 'ASUS'),
-(6, 'VIVO');
+INSERT INTO `t_jenis_merek` (`id`, `slug`, `nama_merek`, `logo_img`) VALUES
+(1, 'samsung_url-by-1', 'SAMSUNG', '1631695952_07bfb98ec6ceb1c7abd2.png'),
+(2, 'xiaomi_url-by-2', 'XIAOMI', '1631695961_29ee7ecd0c4367a4814e.png'),
+(3, 'oppo_url-by-3', 'OPPO', '1631695997_83a34a45c2f1c2b1ac17.png'),
+(4, 'realme_url-by-4', 'Realme', '1631696030_35fe617eb7844e9b1bc6.png'),
+(5, 'asus_url-by-5', 'ASUS', '1631696043_8062d0b5fba016d5c15b.png'),
+(6, 'vivo_url-by-6', 'VIVO', '1631696120_a4effee88b037428ceba.png'),
+(8, 'lenovo_url-by-8', 'Lenovo', '1631696177_0c172fc00eb93e707c1e.jpg'),
+(9, 'iphone_url-by-9', 'Iphone', '1631696300_cb2a293b9e25a1909a72.jpg');
 
 -- --------------------------------------------------------
 
@@ -796,11 +810,13 @@ CREATE TABLE `t_smartphone` (
 --
 
 INSERT INTO `t_smartphone` (`id`, `slug`, `nama_smartphone`, `merek`, `harga`, `tahun`, `network`, `tebal`, `berat`, `bahan_body`, `sim`, `tipe_sim`, `sim_stand`, `jenis_layar`, `jenis_protect_layar`, `resolution_layar`, `tipe_ui_os`, `jenis_chipset`, `nama_chipset`, `clock_speed_cpu`, `jumlah_core`, `jenis_gpu`, `nama_lengkap_gpu`, `internal_storage`, `ram`, `tipe_main_camera`, `resolusi_main_camera`, `selfie_camera`, `resolusi_selfie_camera`, `WLAN`, `bluetooth`, `infrared`, `radio`, `usb_tipe`, `fingerprint`, `face_sensor`, `tipe_batrai`, `kapasitas_batrai`, `tipe_charger`, `test_antutu`, `image1`, `image2`, `image3`, `id_seller`) VALUES
-(3, 'xiaomi_poco_m3_462_by_smartphoneku', 'Xiaomi Poco M3 4/62', 'XIAOMI', 2000000, 2020, '4G', 9.6, 198, 'Plastic', 'Dual', 'Nano SIM', 'Stand-by all', 'IPS', 'Gorilla Glass', 6.53, 'MIUI', 'Snapdragon', 'Qualcomm SM6115 Snapdragon 662 ', 2, 'Octa core', 'Adreno', 'Adreno 610', '64', '4', 'Tripel', 48, 'Single', 8, 'Yes', 'Yes', 'Yes', 'Yes', 'USB Type-C', 'Yes', 'No', 'Non-removable', 6000, 'Fast carging', 177904, '1616820443_7e03f6fb3f8faca3d952.jpg', '1616820443_bccdfacd930564e9c736.jpg', '1616820352_f146bae86bf9565f534d.jpeg', 1),
-(9, 'asus_live_g500tg_216_by_smartphoneku', 'Asus Live G500TG 2/16', 'ASUS', 1000000, 2016, '3G', 10, 140, 'Plastic', 'Dual', 'Micro SIM', 'Stand-by all', 'IPS', 'Anti Spy', 5.2, 'Zen UI', 'Mediatex', 'Mediatek MT6580 ', 1.3, 'Quad core', 'Mali', 'Mali-400MP2', '16', '2', 'Single', 8, 'Single', 2, 'Yes', 'Yes', 'Yes', 'Yes', 'Micro USB', 'No', 'No', 'Removable', 2070, 'Non fast carging', 12123, 'default.jpg', 'default.jpg', 'default.jpg', 1),
-(13, 'oppo_a31_2015_by_smartphoneku', 'Oppo A31 (2015) ', 'OPPO', 550000, 2015, '4G', 8, 135, 'Plastic', 'Dual', 'Nano SIM', 'Stand-by all', 'IPS', 'Oleophobic coating', 4.5, 'Android', 'Snapdragon', 'MSM8916 Snapdragon 410 ', 1.2, 'Quad core', 'Adreno', 'Adreno 306', '8', '1', 'Single', 8, 'None', 5, 'Yes', 'Yes', 'Yes', 'No', 'Micro USB', 'No', 'No', 'Non-removable', 2000, 'Non fast carging', 76890, '1614908457_d6311df8ac64c559e1d1.png', 'default.jpg', 'default.jpg', 1),
-(16, 'asus_rog_6256_by_smartphoneku', 'Asus ROG 6/256', 'ASUS', 5000000, 2019, '4G', 12.5, 120, 'Carbon', 'Dual', 'Nano SIM', 'Stand-by all', 'Super AMOLED', 'Gorilla Glass', 8.2, 'ROG UI', 'Snapdragon', 'Snapdragon 880', 2.7, 'Octa core', 'Adreno', 'Adreno 770', '256', '6', 'Double', 48, 'Single', 16, 'Yes', 'Yes', 'Yes', 'Yes', 'USB Type-C', 'Yes', 'Yes', 'Non-removable', 8000, 'Fast carging', 326534, 'default.jpg', 'default.jpg', 'default.jpg', 1),
-(18, 'oppo_reno_4_by_smartphoneku', 'Oppo Reno 4', 'OPPO', 3400000, 2018, '4G', 9.51, 179.6, 'Plastic', 'Dual', 'Nano SIM', 'Stand-by all', 'IPS', 'Concore Glass', 7.7, 'Android', 'Snapdragon', 'Snapdragon 855', 2.4, 'Octa core', 'Adreno', 'Adreno 670', '64', '4', 'Quard', 48, 'None', 24, 'Yes', 'Yes', 'Yes', 'Yes', 'USB Type-C', 'Yes', 'Yes', 'Non-removable', 5500, 'Fast carging', 275675, 'default.jpg', 'default.jpg', 'default.jpg', 1);
+(3, 'xiaomi_poco_m3_462_by_smartphoneku', 'Xiaomi Poco M3 4/62', 'XIAOMI', 2000000, 2020, '4G', 9.6, 198, 'Plastic', 'Dual', 'Nano SIM', 'Stand-by all', 'IPS', 'Gorilla Glass', 6.53, 'MIUI', 'Snapdragon', 'Qualcomm SM6115 Snapdragon 662 ', 2, 'Octa core', 'Adreno', 'Adreno 610', '64', '4', 'Tripel', 48, 'Single', 8, 'Yes', 'Yes', 'Yes', 'Yes', 'USB Type-C', 'Yes', 'No', 'Non-removable', 6000, 'Fast carging', 177904, '1616820443_7e03f6fb3f8faca3d952.jpg', '1616820443_bccdfacd930564e9c736.jpg', '1616820352_f146bae86bf9565f534d.jpeg', 2),
+(9, 'asus_live_g500tg_216_by_smartphoneku', 'Asus Live G500TG 2/16', 'ASUS', 1000000, 2016, '3G', 10, 140, 'Plastic', 'Dual', 'Micro SIM', 'Stand-by all', 'IPS', 'Anti Spy', 5.2, 'Zen UI', 'Mediatex', 'Mediatek MT6580 ', 1.3, 'Quad core', 'Mali', 'Mali-400MP2', '16', '2', 'Single', 8, 'Single', 2, 'Yes', 'Yes', 'Yes', 'Yes', 'Micro USB', 'No', 'No', 'Removable', 2070, 'Non fast carging', 12123, 'default.jpg', 'default.jpg', 'default.jpg', 2),
+(13, 'oppo_a31_2015_by_smartphoneku', 'Oppo A31 (2015) ', 'OPPO', 550000, 2015, '4G', 8, 135, 'Plastic', 'Dual', 'Nano SIM', 'Stand-by all', 'IPS', 'Oleophobic coating', 4.5, 'Android', 'Snapdragon', 'MSM8916 Snapdragon 410 ', 1.2, 'Quad core', 'Adreno', 'Adreno 306', '8', '1', 'Single', 8, 'None', 5, 'Yes', 'Yes', 'Yes', 'No', 'Micro USB', 'No', 'No', 'Non-removable', 2000, 'Non fast carging', 76890, '1614908457_d6311df8ac64c559e1d1.png', 'default.jpg', 'default.jpg', 2),
+(16, 'asus_rog_6256_by_smartphoneku', 'Asus ROG 6/256', 'ASUS', 5000000, 2019, '4G', 12.5, 120, 'Carbon', 'Dual', 'Nano SIM', 'Stand-by all', 'Super AMOLED', 'Gorilla Glass', 8.2, 'ROG UI', 'Snapdragon', 'Snapdragon 880', 2.7, 'Octa core', 'Adreno', 'Adreno 770', '256', '6', 'Double', 48, 'Single', 16, 'Yes', 'Yes', 'Yes', 'Yes', 'USB Type-C', 'Yes', 'Yes', 'Non-removable', 8000, 'Fast carging', 326534, 'default.jpg', 'default.jpg', 'default.jpg', 2),
+(18, 'oppo_reno_4_by_sindikat_center_phone', 'Oppo Reno 4', 'OPPO', 3400000, 2018, '4G', 9.51, 179.6, 'Plastic', 'Dual', 'Nano SIM', 'Stand-by all', 'IPS', 'Concore Glass', 7.7, 'Android', 'Snapdragon', 'Snapdragon 855', 2.4, 'Octa core', 'Adreno', 'Adreno 670', '64', '4', 'Quard', 48, 'None', 24, 'Yes', 'Yes', 'Yes', 'Yes', 'USB Type-C', 'Yes', 'Yes', 'Non-removable', 5500, 'Fast carging', 275675, '1629692625_5419d15030866bb9389c.png', 'default.jpg', 'default.jpg', 2),
+(19, '', 'Samsung A31 4/64', 'SAMSUNG', 2875000, 2019, '5G', 16, 180, 'Plastic', 'Dual', 'Nano SIM', 'Stand-by all', '', '', 0, '', '', '', 0, 'Octa core', '', '', '64', '4', 'Tripel', 48, 'Single', 16, 'Yes', 'Yes', 'No', 'Yes', '', 'Yes', 'Yes', 'Non-removable', 0, 'Fast carging', 0, '', '', '', 2),
+(20, 'realme_c1_by_smartphoneku', 'Realme C1', 'Realme', 1150000, 2018, '4G', 8.2, 168, 'Plastic', 'Dual', 'Nano SIM', 'Stand-by all', 'IPS', 'Gorilla Glass', 6.2, 'Android', 'Snapdragon', 'Snapdragon 450 ', 1.8, 'Octa core', 'Adreno', 'Adreno 506', '16', '2', 'Double', 13, 'None', 2, 'Yes', 'Yes', 'Yes', 'Yes', 'Micro USB', 'No', 'No', 'Non-removable', 4230, 'Non fast carging', 132654, 'default.jpg', 'default.jpg', 'default.jpg', 1);
 
 --
 -- Indexes for dumped tables
@@ -1049,49 +1065,49 @@ ALTER TABLE `nilai_fk_antutu`
 -- AUTO_INCREMENT for table `nilai_fk_batrai`
 --
 ALTER TABLE `nilai_fk_batrai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `nilai_fk_harga`
 --
 ALTER TABLE `nilai_fk_harga`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `nilai_fk_internal`
 --
 ALTER TABLE `nilai_fk_internal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `nilai_fk_processor`
 --
 ALTER TABLE `nilai_fk_processor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `nilai_fk_ram`
 --
 ALTER TABLE `nilai_fk_ram`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `nilai_fk_resolusi_kamera`
 --
 ALTER TABLE `nilai_fk_resolusi_kamera`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `nilai_fk_resolusi_layar`
 --
 ALTER TABLE `nilai_fk_resolusi_layar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `nilai_fk_tahun`
 --
 ALTER TABLE `nilai_fk_tahun`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `rules`
@@ -1133,7 +1149,7 @@ ALTER TABLE `t_jenis_layar`
 -- AUTO_INCREMENT for table `t_jenis_merek`
 --
 ALTER TABLE `t_jenis_merek`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `t_jenis_protect_layar`
@@ -1157,7 +1173,7 @@ ALTER TABLE `t_jenis_usb`
 -- AUTO_INCREMENT for table `t_smartphone`
 --
 ALTER TABLE `t_smartphone`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

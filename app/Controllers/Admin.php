@@ -125,10 +125,10 @@ class Admin extends BaseController
 
 	public function index()
 	{
-		$countSeller = $this->user->select('hak_akses,count(hak_akses) as jml')->where('hak_akses','2')->groupBy('hak_akses')->first();
-		$countSellerActive = $this->user->select('active_account,count(active_account) as jml')->where('active_account','active')->where('hak_akses','2')->groupBy('active_account')->first();
-		$countSellerNonActive = $this->user->select('active_account,count(active_account) as jml')->where('active_account','non-active')->where('hak_akses','2')->groupBy('active_account')->first();
-		$data=[
+		$countSeller = $this->user->select('hak_akses,count(hak_akses) as jml')->where('hak_akses', '2')->groupBy('hak_akses')->first();
+		$countSellerActive = $this->user->select('active_account,count(active_account) as jml')->where('active_account', 'active')->where('hak_akses', '2')->groupBy('active_account')->first();
+		$countSellerNonActive = $this->user->select('active_account,count(active_account) as jml')->where('active_account', 'non-active')->where('hak_akses', '2')->groupBy('active_account')->first();
+		$data = [
 			'AllSeller' => $countSeller,
 			'activeSeller' => $countSellerActive,
 			'NonactiveSeller' => $countSellerNonActive
@@ -1160,6 +1160,8 @@ class Admin extends BaseController
 			'pager'				=> $this->merek->pager,
 			'CURRENT'       	=> $CURRENT,
 			'data_inpage'     	=> $data_inpage,
+			'validation' => \Config\Services::validation()
+
 		];
 		return view('Admin/nonFuzzy/jenis_merek', $data);
 	}
@@ -1181,10 +1183,50 @@ class Admin extends BaseController
 		if ($getPost == null) {
 			return redirect()->to('/admin/jenis_merek');
 		}
+		////////////////   Validasi Image  ///////////////////
+		if (!$this->validate([
+			'image_merek_insert' => [
+				'rules'     => 'max_size[image_merek_insert,1024]|is_image[image_merek_insert]|mime_in[image_merek_insert,image/jpg,image/jpeg,image/png]',
+				'errors'    => [
+					'max_size' => 'File maximal 1MB',
+					'is_image' => 'Yang anda upload bukan gambar',
+					'mime_in'  => 'Yang anda upload bukan gambar'
+				]
+			],
+		])) {
+			return redirect()->to('/admin/jenis_merek')->withInput();
+		}
+
+		/////////////////// Get image post ////////////////////
+		$image1 = $this->request->getFile('image_merek_insert');
+		///////////////////////////////////////////////////////
+
+		//------    Validation image ada atau tidak   -------//
+		if ($image1->getError() == 4) {
+			$name_image1 = 'default.jpg';
+		} else {
+			//ambil nama file image merek
+			$name_image1 = $image1->getRandomName();
+		}
+		//---------------------------------------------------//
+
 		$data = [
 			'nama_merek' => $getPost['tambahkan'],
+			'logo_img'	 => $name_image1,
 		];
 		$this->merek->save($data);
+		$merekUp = $this->merek->select('id, nama_merek')->where("nama_merek='" . $getPost['tambahkan'] . "' AND logo_img='" . $name_image1 . "'")->findAll();
+		$data = [
+			'id' => $merekUp[0]['id'],
+			'nama_merek' => $getPost['tambahkan'],
+			'logo_img'	 => $name_image1,
+			'slug' => url_title($merekUp[0]['nama_merek'] . '_url-by-' . $merekUp[0]['id'], '_', true),
+		];
+		$this->merek->save($data);
+		if ($name_image1 != 'default.jpg') {
+			//pindahkan file image merek
+			$image1->move('assets/image/merek/', $name_image1);
+		}
 		$data_validate = 'data merek ' . $getPost['tambahkan'] . ' sudah di tambahkan...';
 		session()->setFlashdata('true', $data_validate);
 		return redirect()->to('/admin/jenis_merek');
@@ -1198,11 +1240,48 @@ class Admin extends BaseController
 		if ($getPost == null) {
 			return redirect()->to('/admin/jenis_merek');
 		}
+
+		////////////////   Validasi Image  ///////////////////
+		if (!$this->validate([
+			'image_merek_update_' . $getPost['col'] => [
+				'rules'     => 'max_size[image_merek_update_' . $getPost['col'] . ',1024]|is_image[image_merek_update_' . $getPost['col'] . ']|mime_in[image_merek_update_' . $getPost['col'] . ',image/jpg,image/jpeg,image/png]',
+				'errors'    => [
+					'max_size' => 'File maximal 1MB',
+					'is_image' => 'Yang anda upload bukan gambar',
+					'mime_in'  => 'Yang anda upload bukan gambar'
+				]
+			],
+		])) {
+			return redirect()->to('/admin/jenis_merek?page_t_jenis_merek=' . $getPost['laman'])->withInput();
+		}
+
+		/////////////////// Get image post ////////////////////
+		$image1 = $this->request->getFile('image_merek_update_' . $getPost['col']);
+		///////////////////////////////////////////////////////
+
+		//------    Validation image ada atau tidak   -------//
+		if ($image1->getError() == 4) {
+			$name_image1 = $getPost['img_lawas'];
+		} else {
+			//ambil nama file image merek
+			$name_image1 = $image1->getRandomName();
+		}
+		//---------------------------------------------------//
+
 		$data = [
 			'id'		=> $getPost['id'],
+			'slug' 		=> url_title($getPost['nama_merek'] . '_url-by-' . $getPost['id'], '_', true),
 			'nama_merek' => $getPost['nama_merek'],
+			'logo_img'	 => $name_image1,
 		];
 		$this->merek->save($data);
+		if ($name_image1 != $getPost['img_lawas']) {
+			//pindahkan file image merek
+			$image1->move('assets/image/merek/', $name_image1);
+			if ($getPost['img_lawas'] != null || $getPost['img_lawas'] != 'default.png') {
+				unlink('assets/image/merek/' . $getPost['img_lawas']);
+			}
+		}
 		$data_validate = 'data merek ' . $getPost['nama_merek_lama'] . ' sudah di update menjadi ' . $getPost['nama_merek'] . '...';
 		session()->setFlashdata('true', $data_validate);
 		return redirect()->to('/admin/jenis_merek');
@@ -1217,6 +1296,9 @@ class Admin extends BaseController
 			return redirect()->to('/admin/jenis_merek');
 		}
 		$this->merek->delete_data($getPost['id']);
+		if ($getPost['img_lawas'] != null || $getPost['img_lawas'] != 'default.png') {
+			unlink('assets/image/merek/' . $getPost['img_lawas']);
+		}
 		$data_validate = 'data merek ' . $getPost['nama_merek_lama'] . ' sudah di hapus...';
 		session()->setFlashdata('msg', $data_validate);
 		return redirect()->to('/admin/jenis_merek');

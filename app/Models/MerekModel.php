@@ -8,7 +8,7 @@ class MerekModel extends Model
 {
     protected $table = 't_jenis_merek';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['nama_merek'];
+    protected $allowedFields = ['nama_merek', 'logo_img', 'slug'];
 
     public function Alldata()
     {

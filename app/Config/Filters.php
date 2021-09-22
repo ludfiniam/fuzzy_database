@@ -33,14 +33,14 @@ class Filters extends BaseConfig
 		'before' => [
 			// 'honeypot',
 			// 'csrf',
-			'Adminfilter' => ['except' => ['/', 'login', 'index/*', 'index', 'home/*', 'home']],
-			'SelerFilter' => ['except' => ['/', 'login','index/*', 'index', 'home/*', 'home']]
+			'Adminfilter' => ['except' => ['/', 'login', 'index/*', 'index', 'home/*', 'home', 'search', 'search/*']],
+			'SelerFilter' => ['except' => ['/', 'login', 'index/*', 'index', 'home/*', 'home', 'search', 'search/*']]
 		],
 		'after'  => [
 			'toolbar',
 			// 'honeypot',
-			'Adminfilter' => ['except' => ['admin', 'admin/*', 'error', '/', 'home', 'home/*','index/*', 'index']],
-			'SelerFilter' => ['except' => ['user', 'user/*', 'error', '/', 'home', 'home/*','index/*', 'index']],
+			'Adminfilter' => ['except' => ['admin', 'admin/*', 'error', '/', 'home', 'home/*', 'index/*', 'index', 'search', 'search/*']],
+			'SelerFilter' => ['except' => ['user', 'user/*', 'error', '/', 'home', 'home/*', 'index/*', 'index', 'search', 'search/*']],
 		],
 	];
 

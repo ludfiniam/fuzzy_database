@@ -16,10 +16,23 @@ class PhoneModel extends Model
         return $data;
     }
 
+    public function allSmartphonePaginationForPublic()
+    {
+        $data = $this->select('t_smartphone.id as id,slug,nama_smartphone,merek,tahun,harga,t_account.full_name as nama_seller,image1,image2,image3')->join('t_account', 't_account.id=t_smartphone.id_seller');
+        return $data;
+    }
+
     public function FindAllSmartphonePaginationAdmin($keyword, $id_seller)
     {
         $data = $this->select('t_smartphone.id as id,slug,nama_smartphone,merek,tahun,harga,t_account.full_name as nama_seller')->join('t_account', 't_account.id=t_smartphone.id_seller');
         $data = $data->like('nama_smartphone', $keyword)->orLike('merek', $keyword)->orLike('t_account.full_name', $keyword)->where('id_seller', $id_seller);
+        return $data;
+    }
+
+    public function FindAllSmartphonePaginationForPublic($keyword)
+    {
+        $data = $this->select('t_smartphone.id as id,slug,nama_smartphone,merek,tahun,harga,t_account.full_name as nama_seller,image1,image2,image3')->join('t_account', 't_account.id=t_smartphone.id_seller');
+        $data = $data->like('nama_smartphone', $keyword)->orLike('merek', $keyword)->orLike('t_account.full_name', $keyword);
         return $data;
     }
 
@@ -38,11 +51,11 @@ class PhoneModel extends Model
     public function Hitung_fk($id_smartphone, $variable_fk, $tabel_fk_model, $tabel_nilai_fk_model)
     {
         //periksa data ada atau tidak sesuai id_smartphone
-        $cek = $this->table($tabel_nilai_fk_model)->where('id_smartphone',$id_smartphone)->first();
+        $cek = $this->table($tabel_nilai_fk_model)->where('id_smartphone', $id_smartphone)->first();
         //jika ada tidak perlu bikin, namun jika belum bikin mentahannya
-        if ($cek==null) {
+        if ($cek == null) {
             $data = [
-                'id_smartphone'=>$id_smartphone,
+                'id_smartphone' => $id_smartphone,
             ];
             $this->table($tabel_nilai_fk_model)->save($data);
         }
@@ -139,5 +152,4 @@ class PhoneModel extends Model
             $this->table($tabel_nilai_fk_model)->where('id_smartphone', $data['id_smartphone'])->set($data)->update();
         }
     }
-
 }

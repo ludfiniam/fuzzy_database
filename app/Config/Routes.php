@@ -32,6 +32,7 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Index::index');
+$routes->get('/search', 'Index::search');
 $routes->get('/login', 'Index::login');
 $routes->delete('/admin/datasmartphone/(:num)', 'Admin::delete_smartphone/$1');
 $routes->delete('/user/data_smartphone/(:num)', 'User::delete_smartphone/$1');
