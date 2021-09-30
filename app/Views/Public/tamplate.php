@@ -48,9 +48,10 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="/">Home</a></li>
+          <li><a class="nav-link scrollto active" href="/#">Home</a></li>
           <li><a class="nav-link scrollto" href="/#about">About</a></li>
-          <li><a class="nav-link scrollto" href="/#merek">Merek</a></li>
+          <li><a class="nav-link scrollto" href="/#mrk">Merek</a></li>
+          <li><a class="nav-link scrollto " href="/#partner">Toko</a></li>
           <li><a class="nav-link scrollto " href="/#portfolio">Portfolio</a></li>
           <li><a class="nav-link scrollto" href="/#team">Team</a></li>
           <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>

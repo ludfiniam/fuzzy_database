@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2021 at 10:12 AM
+-- Generation Time: Sep 25, 2021 at 11:10 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -548,6 +548,7 @@ INSERT INTO `rules` (`id`, `nama_rules`) VALUES
 
 CREATE TABLE `t_account` (
   `id` int(11) NOT NULL,
+  `slug` varchar(100) NOT NULL,
   `full_name` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
   `username` varchar(30) NOT NULL,
@@ -563,11 +564,11 @@ CREATE TABLE `t_account` (
 -- Dumping data for table `t_account`
 --
 
-INSERT INTO `t_account` (`id`, `full_name`, `email`, `username`, `password`, `telp`, `hak_akses`, `address`, `active_account`, `image_profile`) VALUES
-(1, 'Smartphoneku', 'ludfiniam@gmail.com', 'ludfiniam', 'admin', '08985222402', 1, 'Langon RT 09 RW 04, Tahunan, Jepara, Jawa Tengah, Indonesia', 'active', '1615617322_3668161d1a021ce31e0f.jpg'),
-(2, 'Sindikat Center Phone', 'user1@gmail.com', 'user1', 'user1', '089922110909', 2, 'Ngentak Sapen no.405, Depok, Sleman, Yogyakarta', 'active', '1615443596_3b223196d1c2c75c7a01.jpg'),
-(4, 'Ludfiniam Phone cabang Kudus', 'ludfiniam02@gmail.com', 'ludfiniam02', 'admin123', '08908017333', 2, 'Kudus Menara', 'active', 'default.jpg'),
-(5, 'Ludfiniam Phone cabang Semaran', 'ludfiniam03@gmail.com', 'ludfiniam03', '12345', '08908017444', 2, 'Ungarang Semarang', 'active', 'default.jpg');
+INSERT INTO `t_account` (`id`, `slug`, `full_name`, `email`, `username`, `password`, `telp`, `hak_akses`, `address`, `active_account`, `image_profile`) VALUES
+(1, 'smartphoneku_telp-08985222402', 'Smartphoneku', 'ludfiniam@gmail.com', 'ludfiniam', 'admin', '08985222402', 1, 'Langon RT 09 RW 04, Tahunan, Jepara, Jawa Tengah, Indonesia', 'active', '1615617322_3668161d1a021ce31e0f.jpg'),
+(2, 'sindikat-center-phone_telp-089922110909', 'Sindikat Center Phone', 'user1@gmail.com', 'user1', 'user1', '089922110909', 2, 'Ngentak Sapen no.405, Depok, Sleman, Yogyakarta', 'active', '1632471381_f0d5a775db878c833c4e.jpg'),
+(4, 'ludfiniam-phone-cabang-kudus_telp-08908017333', 'Ludfiniam Phone cabang Kudus', 'ludfiniam02@gmail.com', 'ludfiniam02', 'admin123', '08908017333', 2, 'Kudus Menara', 'active', 'default.jpg'),
+(5, 'ludfiniam-phone-cabang-semaran_telp-08908017444', 'Ludfiniam Phone cabang Semaran', 'ludfiniam03@gmail.com', 'ludfiniam03', '12345', '08908017444', 2, 'Ungarang Semarang', 'active', 'default.jpg');
 
 -- --------------------------------------------------------
 
@@ -812,11 +813,11 @@ CREATE TABLE `t_smartphone` (
 INSERT INTO `t_smartphone` (`id`, `slug`, `nama_smartphone`, `merek`, `harga`, `tahun`, `network`, `tebal`, `berat`, `bahan_body`, `sim`, `tipe_sim`, `sim_stand`, `jenis_layar`, `jenis_protect_layar`, `resolution_layar`, `tipe_ui_os`, `jenis_chipset`, `nama_chipset`, `clock_speed_cpu`, `jumlah_core`, `jenis_gpu`, `nama_lengkap_gpu`, `internal_storage`, `ram`, `tipe_main_camera`, `resolusi_main_camera`, `selfie_camera`, `resolusi_selfie_camera`, `WLAN`, `bluetooth`, `infrared`, `radio`, `usb_tipe`, `fingerprint`, `face_sensor`, `tipe_batrai`, `kapasitas_batrai`, `tipe_charger`, `test_antutu`, `image1`, `image2`, `image3`, `id_seller`) VALUES
 (3, 'xiaomi_poco_m3_462_by_smartphoneku', 'Xiaomi Poco M3 4/62', 'XIAOMI', 2000000, 2020, '4G', 9.6, 198, 'Plastic', 'Dual', 'Nano SIM', 'Stand-by all', 'IPS', 'Gorilla Glass', 6.53, 'MIUI', 'Snapdragon', 'Qualcomm SM6115 Snapdragon 662 ', 2, 'Octa core', 'Adreno', 'Adreno 610', '64', '4', 'Tripel', 48, 'Single', 8, 'Yes', 'Yes', 'Yes', 'Yes', 'USB Type-C', 'Yes', 'No', 'Non-removable', 6000, 'Fast carging', 177904, '1616820443_7e03f6fb3f8faca3d952.jpg', '1616820443_bccdfacd930564e9c736.jpg', '1616820352_f146bae86bf9565f534d.jpeg', 2),
 (9, 'asus_live_g500tg_216_by_smartphoneku', 'Asus Live G500TG 2/16', 'ASUS', 1000000, 2016, '3G', 10, 140, 'Plastic', 'Dual', 'Micro SIM', 'Stand-by all', 'IPS', 'Anti Spy', 5.2, 'Zen UI', 'Mediatex', 'Mediatek MT6580 ', 1.3, 'Quad core', 'Mali', 'Mali-400MP2', '16', '2', 'Single', 8, 'Single', 2, 'Yes', 'Yes', 'Yes', 'Yes', 'Micro USB', 'No', 'No', 'Removable', 2070, 'Non fast carging', 12123, 'default.jpg', 'default.jpg', 'default.jpg', 2),
-(13, 'oppo_a31_2015_by_smartphoneku', 'Oppo A31 (2015) ', 'OPPO', 550000, 2015, '4G', 8, 135, 'Plastic', 'Dual', 'Nano SIM', 'Stand-by all', 'IPS', 'Oleophobic coating', 4.5, 'Android', 'Snapdragon', 'MSM8916 Snapdragon 410 ', 1.2, 'Quad core', 'Adreno', 'Adreno 306', '8', '1', 'Single', 8, 'None', 5, 'Yes', 'Yes', 'Yes', 'No', 'Micro USB', 'No', 'No', 'Non-removable', 2000, 'Non fast carging', 76890, '1614908457_d6311df8ac64c559e1d1.png', 'default.jpg', 'default.jpg', 2),
+(13, 'oppo_a31_2015_by_smartphoneku', 'Oppo A31 (2015) ', 'OPPO', 550000, 2015, '4G', 8, 135, 'Plastic', 'Dual', 'Nano SIM', 'Stand-by all', 'IPS', 'Oleophobic coating', 4.5, 'Android', 'Snapdragon', 'MSM8916 Snapdragon 410 ', 1.2, 'Quad core', 'Adreno', 'Adreno 306', '8', '1', 'Single', 8, 'Single', 5, 'Yes', 'Yes', 'Yes', 'No', 'Micro USB', 'No', 'No', 'Non-removable', 2000, 'Non fast carging', 76890, '1614908457_d6311df8ac64c559e1d1.png', 'default.jpg', 'default.jpg', 2),
 (16, 'asus_rog_6256_by_smartphoneku', 'Asus ROG 6/256', 'ASUS', 5000000, 2019, '4G', 12.5, 120, 'Carbon', 'Dual', 'Nano SIM', 'Stand-by all', 'Super AMOLED', 'Gorilla Glass', 8.2, 'ROG UI', 'Snapdragon', 'Snapdragon 880', 2.7, 'Octa core', 'Adreno', 'Adreno 770', '256', '6', 'Double', 48, 'Single', 16, 'Yes', 'Yes', 'Yes', 'Yes', 'USB Type-C', 'Yes', 'Yes', 'Non-removable', 8000, 'Fast carging', 326534, 'default.jpg', 'default.jpg', 'default.jpg', 2),
-(18, 'oppo_reno_4_by_sindikat_center_phone', 'Oppo Reno 4', 'OPPO', 3400000, 2018, '4G', 9.51, 179.6, 'Plastic', 'Dual', 'Nano SIM', 'Stand-by all', 'IPS', 'Concore Glass', 7.7, 'Android', 'Snapdragon', 'Snapdragon 855', 2.4, 'Octa core', 'Adreno', 'Adreno 670', '64', '4', 'Quard', 48, 'None', 24, 'Yes', 'Yes', 'Yes', 'Yes', 'USB Type-C', 'Yes', 'Yes', 'Non-removable', 5500, 'Fast carging', 275675, '1629692625_5419d15030866bb9389c.png', 'default.jpg', 'default.jpg', 2),
-(19, '', 'Samsung A31 4/64', 'SAMSUNG', 2875000, 2019, '5G', 16, 180, 'Plastic', 'Dual', 'Nano SIM', 'Stand-by all', '', '', 0, '', '', '', 0, 'Octa core', '', '', '64', '4', 'Tripel', 48, 'Single', 16, 'Yes', 'Yes', 'No', 'Yes', '', 'Yes', 'Yes', 'Non-removable', 0, 'Fast carging', 0, '', '', '', 2),
-(20, 'realme_c1_by_smartphoneku', 'Realme C1', 'Realme', 1150000, 2018, '4G', 8.2, 168, 'Plastic', 'Dual', 'Nano SIM', 'Stand-by all', 'IPS', 'Gorilla Glass', 6.2, 'Android', 'Snapdragon', 'Snapdragon 450 ', 1.8, 'Octa core', 'Adreno', 'Adreno 506', '16', '2', 'Double', 13, 'None', 2, 'Yes', 'Yes', 'Yes', 'Yes', 'Micro USB', 'No', 'No', 'Non-removable', 4230, 'Non fast carging', 132654, 'default.jpg', 'default.jpg', 'default.jpg', 1);
+(18, 'oppo_reno_4_by_sindikat_center_phone', 'Oppo Reno 4', 'OPPO', 3400000, 2018, '4G', 9.51, 179.6, 'Plastic', 'Dual', 'Nano SIM', 'Stand-by all', 'IPS', 'Concore Glass', 7.7, 'Android', 'Snapdragon', 'Snapdragon 855', 2.4, 'Octa core', 'Adreno', 'Adreno 670', '64', '4', 'Quard', 48, 'Single', 24, 'Yes', 'Yes', 'Yes', 'Yes', 'USB Type-C', 'Yes', 'Yes', 'Non-removable', 5500, 'Fast carging', 275675, '1629692625_5419d15030866bb9389c.png', 'default.jpg', 'default.jpg', 2),
+(19, 'halo_halo_bando', 'Samsung A31 4/64', 'SAMSUNG', 2875000, 2019, '5G', 16, 180, 'Plastic', 'Dual', 'Nano SIM', 'Stand-by all', 'IPS', 'Concore Glass', 7.1, 'Android', 'Snapdragon', 'Snapdragon 454', 1.7, 'Octa core', 'Mali', 'Mali-230MP2', '64', '4', 'Tripel', 48, 'Single', 16, 'Yes', 'Yes', 'No', 'Yes', 'Micro USB', 'Yes', 'Yes', 'Non-removable', 3000, 'Fast carging', 21676, '', '', '', 2),
+(20, 'realme_c1_by_smartphoneku', 'Realme C1', 'Realme', 1150000, 2018, '4G', 8.2, 168, 'Plastic', 'Dual', 'Nano SIM', 'Stand-by all', 'IPS', 'Gorilla Glass', 6.2, 'Android', 'Snapdragon', 'Snapdragon 450 ', 1.8, 'Octa core', 'Adreno', 'Adreno 506', '16', '2', 'Double', 13, 'Single', 4, 'Yes', 'Yes', 'Yes', 'Yes', 'Micro USB', 'No', 'No', 'Non-removable', 4230, 'Non fast carging', 132654, 'default.jpg', 'default.jpg', 'default.jpg', 1);
 
 --
 -- Indexes for dumped tables

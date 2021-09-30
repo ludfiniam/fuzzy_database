@@ -33,14 +33,14 @@ class Filters extends BaseConfig
 		'before' => [
 			// 'honeypot',
 			// 'csrf',
-			'Adminfilter' => ['except' => ['/', 'login', 'index/*', 'index', 'home/*', 'home', 'search', 'search/*']],
-			'SelerFilter' => ['except' => ['/', 'login', 'index/*', 'index', 'home/*', 'home', 'search', 'search/*']]
+			'Adminfilter' => ['except' => ['/', 'login', 'index/*', 'index', 'home/*', 'home', 'search', 'search/*', 'detail_smartphone/*', 'detail_smartphone', 'detail_seller/*']],
+			'SelerFilter' => ['except' => ['/', 'login', 'index/*', 'index', 'home/*', 'home', 'search', 'search/*', 'detail_smartphone/*', 'detail_smartphone', 'detail_seller/*']]
 		],
 		'after'  => [
 			'toolbar',
 			// 'honeypot',
-			'Adminfilter' => ['except' => ['admin', 'admin/*', 'error', '/', 'home', 'home/*', 'index/*', 'index', 'search', 'search/*']],
-			'SelerFilter' => ['except' => ['user', 'user/*', 'error', '/', 'home', 'home/*', 'index/*', 'index', 'search', 'search/*']],
+			'Adminfilter' => ['except' => ['admin', 'admin/*', 'error', '/', 'home', 'home/*', 'index/*', 'index', 'search', 'search/*', 'detail_smartphone/*', 'detail_smartphone', 'detail_seller/*']],
+			'SelerFilter' => ['except' => ['user', 'user/*', 'error', '/', 'home', 'home/*', 'index/*', 'index', 'search', 'search/*', 'detail_smartphone/*', 'detail_smartphone', 'detail_seller/*']],
 		],
 	];
 

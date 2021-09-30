@@ -14,7 +14,6 @@ function rupiah($angka)
 <p></p>
 <p></p>
 <section id="standart" class="align-items-center">
-
 	<div class="container" data-aos="fade-up">
 		<div class="row mb-3 align-items-center justify-content-center">
 			<p></p>
@@ -22,6 +21,7 @@ function rupiah($angka)
 			<h1 class="text-center">Search Smartphone</h1>
 		</div>
 		<div class="row">
+			<?php d(session()->get()) ?>
 			<div class="col-xs-2 col-md-2 mb-3">
 				<div class="card">
 					<div class="card-header">
@@ -32,11 +32,11 @@ function rupiah($angka)
 							<div class="row mb-2">
 								<div class="col-12">
 									<label for="merek">Merek</label>
-									<select class="form-control text-center" name="merek">
+									<select class="form-control text-center" name="merek" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
 										<option value="0">All</option>
 										<?php foreach ($merek as $brand) {
 										?>
-											<option value="<?= $brand['slug']; ?>"><?= $brand['nama_merek']; ?></option>
+											<option value="<?= $brand['slug']; ?>" <?= session()->get('fk_merek') == $brand['slug'] ? 'selected' : ''; ?>><?= $brand['nama_merek']; ?></option>
 										<?php
 										} ?>
 									</select>
@@ -45,12 +45,12 @@ function rupiah($angka)
 							<div class="row mb-2">
 								<div class="col-12">
 									<label for="harga">Harga</label>
-									<select class="form-control text-center" name="harga">
+									<select class="form-control text-center" name="harga" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
 										<option value="0">All</option>
 										<?php foreach ($harga as $duit) {
 											if ($duit['ket_aktif'] != 'false') {
 										?>
-												<option value="<?= $duit['id']; ?>"><?= $duit['ket_status']; ?></option>
+												<option value="<?= $duit['id']; ?>" <?= session()->get('fk_harga') == $duit['id'] ? 'selected' : ''; ?>><?= $duit['ket_status']; ?></option>
 										<?php
 											}
 										} ?>
@@ -60,12 +60,12 @@ function rupiah($angka)
 							<div class="row mb-2">
 								<div class="col-12">
 									<label for="ram">RAM</label>
-									<select class="form-control text-center" name="ram">
+									<select class="form-control text-center" name="ram" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
 										<option value="0">All</option>
 										<?php foreach ($ram as $ram_hp) {
 											if ($ram_hp['ket_aktif'] != 'false') {
 										?>
-												<option value="<?= $ram_hp['id']; ?>"><?= $ram_hp['ket_status']; ?></option>
+												<option value="<?= $ram_hp['id']; ?>" <?= session()->get('fk_ram') == $ram_hp['id'] ? 'selected' : ''; ?>><?= $ram_hp['ket_status']; ?></option>
 										<?php
 											}
 										} ?>
@@ -75,12 +75,12 @@ function rupiah($angka)
 							<div class="row mb-2">
 								<div class="col-12">
 									<label for="internal">Internal</label>
-									<select class="form-control text-center" name="internal">
+									<select class="form-control text-center" name="internal" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
 										<option value="0">All</option>
 										<?php foreach ($internal as $penyimpanan) {
 											if ($penyimpanan['ket_aktif'] != 'false') {
 										?>
-												<option value="<?= $penyimpanan['id']; ?>"><?= $penyimpanan['ket_status']; ?></option>
+												<option value="<?= $penyimpanan['id']; ?>" <?= session()->get('fk_internal') == $penyimpanan['id'] ? 'selected' : ''; ?>><?= $penyimpanan['ket_status']; ?></option>
 										<?php
 											}
 										} ?>
@@ -90,12 +90,12 @@ function rupiah($angka)
 							<div class="row mb-2">
 								<div class="col-12">
 									<label for="tahun">Tahun</label>
-									<select class="form-control text-center" name="tahun">
+									<select class="form-control text-center" name="tahun" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
 										<option value="0">All</option>
 										<?php foreach ($tahun as $keluaran) {
 											if ($keluaran['ket_aktif'] != 'false') {
 										?>
-												<option value="<?= $keluaran['id']; ?>"><?= $keluaran['ket_status']; ?></option>
+												<option value="<?= $keluaran['id']; ?>" <?= session()->get('fk_tahun') == $keluaran['id'] ? 'selected' : ''; ?>><?= $keluaran['ket_status']; ?></option>
 										<?php
 											}
 										} ?>
@@ -105,12 +105,12 @@ function rupiah($angka)
 							<div class="row mb-2">
 								<div class="col-12">
 									<label for="ui_os">UI OS</label>
-									<select class="form-control text-center" name="ui_os">
+									<select class="form-control text-center" name="ui_os" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
 										<option>All</option>
 										<option value="0">All</option>
 										<?php foreach ($ui_os as $UI) {
 										?>
-											<option value="<?= $UI['id']; ?>"><?= $UI['nama_ui_os']; ?></option>
+											<option value="<?= $UI['id']; ?>" <?= session()->get('fk_ui_os') == $UI['id'] ? 'selected' : ''; ?>><?= $UI['nama_ui_os']; ?></option>
 										<?php
 										} ?>
 									</select>
@@ -119,11 +119,11 @@ function rupiah($angka)
 							<div class="row mb-2">
 								<div class="col-12">
 									<label for="jns_processor">Processor</label>
-									<select class="form-control text-center" name="jns_processor">
+									<select class="form-control text-center" name="jns_processor" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
 										<option value="0">All</option>
 										<?php foreach ($processor as $cpu) {
 										?>
-											<option value="<?= $cpu['id']; ?>"><?= $cpu['nama_chipset']; ?></option>
+											<option value="<?= $cpu['id']; ?>" <?= session()->get('fk_jns_processor') == $cpu['id'] ? 'selected' : ''; ?>><?= $cpu['nama_chipset']; ?></option>
 										<?php
 										} ?>
 									</select>
@@ -132,12 +132,12 @@ function rupiah($angka)
 							<div class="row mb-2">
 								<div class="col-12">
 									<label for="speed_processor">Speed Processor</label>
-									<select class="form-control text-center" name="speed_processor">
+									<select class="form-control text-center" name="speed_processor" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
 										<option value="0">All</option>
 										<?php foreach ($speedprocessor as $speedcpu) {
 											if ($speedcpu['ket_aktif'] != 'false') {
 										?>
-												<option value="<?= $speedcpu['id']; ?>"><?= $speedcpu['ket_status']; ?></option>
+												<option value="<?= $speedcpu['id']; ?>" <?= session()->get('fk_speed_processor') == $speedcpu['id'] ? 'selected' : ''; ?>><?= $speedcpu['ket_status']; ?></option>
 										<?php
 											}
 										} ?>
@@ -147,11 +147,11 @@ function rupiah($angka)
 							<div class="row mb-2">
 								<div class="col-12">
 									<label for="jenis_gpu">Jenis GPU</label>
-									<select class="form-control text-center" name="jenis_gpu">
+									<select class="form-control text-center" name="jenis_gpu" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
 										<option value="0">All</option>
 										<?php foreach ($gpu as $grapic) {
 										?>
-											<option value="<?= $grapic['id']; ?>"><?= $grapic['nama_gpu']; ?></option>
+											<option value="<?= $grapic['id']; ?>" <?= session()->get('fk_gpu') == $grapic['id'] ? 'selected' : ''; ?>><?= $grapic['nama_gpu']; ?></option>
 										<?php
 										} ?>
 									</select>
@@ -160,12 +160,12 @@ function rupiah($angka)
 							<div class="row mb-2">
 								<div class="col-12">
 									<label for="antutu">Skor Antutu</label>
-									<select class="form-control text-center" name="antutu">
+									<select class="form-control text-center" name="antutu" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
 										<option value="0">All</option>
 										<?php foreach ($antutu as $scoreantutu) {
 											if ($scoreantutu['ket_aktif'] != 'false') {
 										?>
-												<option value="<?= $scoreantutu['id']; ?>"><?= $scoreantutu['ket_status']; ?></option>
+												<option value="<?= $scoreantutu['id']; ?>" <?= session()->get('fk_antutu') == $scoreantutu['id'] ? 'selected' : ''; ?>><?= $scoreantutu['ket_status']; ?></option>
 										<?php
 											}
 										} ?>
@@ -175,11 +175,11 @@ function rupiah($angka)
 							<div class="row mb-2">
 								<div class="col-12">
 									<label for="bahan_body">Bahan Body</label>
-									<select class="form-control text-center" name="bahan_body">
+									<select class="form-control text-center" name="bahan_body" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
 										<option value="0">All</option>
 										<?php foreach ($body as $material) {
 										?>
-											<option value="<?= $material['id']; ?>"><?= $material['nama_bahan_body']; ?></option>
+											<option value="<?= $material['id']; ?>" <?= session()->get('fk_bahan_body') == $material['id'] ? 'selected' : ''; ?>><?= $material['nama_bahan_body']; ?></option>
 										<?php
 										} ?>
 									</select>
@@ -188,12 +188,12 @@ function rupiah($angka)
 							<div class="row mb-2">
 								<div class="col-12">
 									<label for="resolusi_layar">Lebar Layar</label>
-									<select class="form-control text-center" name="resolusi_layar">
+									<select class="form-control text-center" name="resolusi_layar" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
 										<option value="0">All</option>
 										<?php foreach ($lebar_layar as $layar_hp) {
 											if ($layar_hp['ket_aktif'] != 'false') {
 										?>
-												<option value="<?= $layar_hp['id']; ?>"><?= $layar_hp['ket_status']; ?></option>
+												<option value="<?= $layar_hp['id']; ?>" <?= session()->get('fk_resolusi_layar') == $layar_hp['id'] ? 'selected' : ''; ?>><?= $layar_hp['ket_status']; ?></option>
 										<?php
 											}
 										} ?>
@@ -203,11 +203,11 @@ function rupiah($angka)
 							<div class="row mb-2">
 								<div class="col-12">
 									<label for="tipe_layar">Tipe Layar</label>
-									<select class="form-control text-center" name="tipe_layar">
+									<select class="form-control text-center" name="tipe_layar" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
 										<option value="0">All</option>
 										<?php foreach ($tipe_layar as $jenis_layar) {
 										?>
-											<option value="<?= $jenis_layar['id']; ?>"><?= $jenis_layar['nama_jenis_layar']; ?></option>
+											<option value="<?= $jenis_layar['id']; ?>" <?= session()->get('fk_tipe_layar') == $jenis_layar['id'] ? 'selected' : ''; ?>><?= $jenis_layar['nama_jenis_layar']; ?></option>
 										<?php
 										} ?>
 									</select>
@@ -216,11 +216,11 @@ function rupiah($angka)
 							<div class="row mb-2">
 								<div class="col-12">
 									<label for="proteksi_layar">Pelindung Layar</label>
-									<select class="form-control text-center" name="proteksi_layar">
+									<select class="form-control text-center" name="proteksi_layar" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
 										<option value="0">All</option>
 										<?php foreach ($pelindung_layar as $protect_layar) {
 										?>
-											<option value="<?= $protect_layar['id']; ?>"><?= $protect_layar['nama_protect_layar']; ?></option>
+											<option value="<?= $protect_layar['id']; ?>" <?= session()->get('fk_proteksi_layar') == $protect_layar['id'] ? 'selected' : ''; ?>><?= $protect_layar['nama_protect_layar']; ?></option>
 										<?php
 										} ?>
 									</select>
@@ -229,12 +229,12 @@ function rupiah($angka)
 							<div class="row mb-2">
 								<div class="col-12">
 									<label for="resolusi_kamera_belakang">Resolusi Kamera</label>
-									<select class="form-control text-center" name="resolusi_kamera_belakang">
+									<select class="form-control text-center" name="resolusi_kamera_belakang" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
 										<option value="0">All</option>
 										<?php foreach ($resolusi_kamera as $kamera_mp) {
 											if ($kamera_mp['ket_aktif'] != 'false') {
 										?>
-												<option value="<?= $kamera_mp['id']; ?>"><?= $kamera_mp['ket_status']; ?></option>
+												<option value="<?= $kamera_mp['id']; ?>" <?= session()->get('fk_kamera_belakang') == $kamera_mp['id'] ? 'selected' : ''; ?>><?= $kamera_mp['ket_status']; ?></option>
 										<?php
 											}
 										} ?>
@@ -244,12 +244,12 @@ function rupiah($angka)
 							<div class="row mb-2">
 								<div class="col-12">
 									<label for="kapasitas_batrai">Kapasitas Batrai</label>
-									<select class="form-control text-center" name="kapasitas_batrai">
+									<select class="form-control text-center" name="kapasitas_batrai" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
 										<option value="0">All</option>
 										<?php foreach ($batrai as $daya_tahan) {
 											if ($daya_tahan['ket_aktif'] != 'false') {
 										?>
-												<option value="<?= $daya_tahan['id']; ?>"><?= $daya_tahan['ket_status']; ?></option>
+												<option value="<?= $daya_tahan['id']; ?>" <?= session()->get('fk_kapasitas_batrai') == $daya_tahan['id'] ? 'selected' : ''; ?>><?= $daya_tahan['ket_status']; ?></option>
 										<?php
 											}
 										} ?>
@@ -259,11 +259,11 @@ function rupiah($angka)
 							<div class="row mb-2">
 								<div class="col-12">
 									<label for="usb_tipe">Tipe USB Carger</label>
-									<select class="form-control text-center" name="usb_tipe">
+									<select class="form-control text-center" name="usb_tipe" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
 										<option value="0">All</option>
 										<?php foreach ($cas as $carger) {
 										?>
-											<option value="<?= $carger['id']; ?>"><?= $carger['nama_usb']; ?></option>
+											<option value="<?= $carger['id']; ?>" <?= session()->get('fk_usb_tipe') == $carger['id'] ? 'selected' : ''; ?>><?= $carger['nama_usb']; ?></option>
 										<?php
 										} ?>
 									</select>
@@ -271,7 +271,15 @@ function rupiah($angka)
 							</div>
 							<div class="row mb-2">
 								<div class="col-12">
-									<button class="btn btn-primary" value="submit" type="submit">cari</button>
+									<?php if (session()->get('data_filter') == 'Yes') {
+									?>
+										<a href="/search/delete_filter"><button class="btn btn-danger">hapus filter</button></a>
+									<?php
+									} else {
+									?>
+										<button class="btn btn-primary" value="submit" type="submit">cari</button>
+									<?php
+									} ?>
 								</div>
 							</div>
 
@@ -361,41 +369,49 @@ function rupiah($angka)
 													</div>
 													<div class="col-xs-6 col-md-6 mb-3">
 														<div class="short-div mb-2">
-															<label for="nama_smartphone" class="form-label">Nama Smartphone</label>
+															<label for="nama_smartphone" class="form-label small">Nama Smartphone</label>
 															<div type="text" class="form-control form-control-lg" id="nama_smartphone"><?= $smartphone['nama_smartphone']; ?>
 															</div>
 														</div>
-														<div class="short-div mb-2">
+														<div class="short-div">
 															<div class="row">
-																<div class="col-5">
-																	<label for="harga" class="form-label">Harga</label>
-																	<div type="text" class="form-control form-control-sm" id="harga"><?= rupiah($smartphone['harga']); ?>
-																	</div>
+																<div class="col-xs-5 col-md-5 mb-2">
+																	<form class="form-floating">
+																		<div type="text" class="form-control form-control-sm" id="harga"><?= rupiah($smartphone['harga']); ?>
+																		</div>
+																		<label for="toko" class="form-label small">Harga</label>
+																	</form>
 																</div>
-																<div class="col-7">
-																	<label for="toko" class="form-label">Toko</label>
-																	<div type="text" class="form-control form-control-sm" id="toko"><?= $smartphone['nama_seller']; ?>
-																	</div>
+																<div class="col-xs-7 col-md-7 mb-2">
+																	<form class="form-floating">
+																		<div type="text" class="form-control form-control-sm" id="toko"><?= $smartphone['nama_seller']; ?>
+																		</div>
+																		<label for="toko" class="form-label small">Toko</label>
+																	</form>
 																</div>
 															</div>
 														</div>
 														<div class="short-div mb-2">
 															<div class="row">
-																<div class="col">
-																	<label for="merek" class="form-label">Merek</label>
-																	<div type="text" class="form-control form-control-sm" id="merek"><?= $smartphone['merek']; ?>
-																	</div>
+																<div class="col-xs-6 col-md-6 mb-2">
+																	<form class="form-floating">
+																		<div type="text" class="form-control form-control-sm" id="merek"><?= $smartphone['merek']; ?>
+																		</div>
+																		<label for="merek" class="form-label small">Merek</label>
+																	</form>
 																</div>
-																<div class="col">
-																	<label for="tahun" class="form-label">Tahun</label>
-																	<div type="text" class="form-control form-control-sm" id="tahun"><?= $smartphone['tahun']; ?>
-																	</div>
+																<div class="col-xs-6 col-md-6 mb-2">
+																	<form class="form-floating">
+																		<div type="text" class="form-control form-control-sm" id="tahun"><?= $smartphone['tahun']; ?>
+																		</div>
+																		<label for="tahun" class="form-label small">Tahun</label>
+																	</form>
 																</div>
 															</div>
 														</div>
 													</div>
 													<div class="col-xs-2 col-md-2 mb-3  d-flex align-items-center justify-content-center">
-														<a href="/detail-smartphone/<?= $smartphone['slug']; ?>" class="btn btn-primary text-center">detail</a>
+														<a href="/detail_smartphone/<?= $smartphone['slug']; ?>" class="btn btn-primary text-center">detail</a>
 													</div>
 												</div>
 											</div>

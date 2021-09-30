@@ -8,7 +8,7 @@ class LoginModel extends Model
 {
     protected $table = 't_account';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['username', 'full_name', 'email', 'password', 'telp', 'active_account', 'hak_akses', 'address', 'image_profile'];
+    protected $allowedFields = ['slug', 'username', 'full_name', 'email', 'password', 'telp', 'active_account', 'hak_akses', 'address', 'image_profile'];
 
     //View paggination semua seller
     public function AllSellerPagination()

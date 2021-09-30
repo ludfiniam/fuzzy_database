@@ -63,7 +63,7 @@
   </section><!-- End About Section -->
 
   <!-- ======= Merek Section ======= -->
-  <section id="merek" class="clients">
+  <section id="mrk" class="clients">
     <div class="container" data-aos="zoom-in">
 
       <div class="section-title">
@@ -103,7 +103,37 @@
   <!-- ======= Partner Section ======= -->
   <section id="partner" class="steps">
     <div class="container">
-
+      <div class="section-title">
+        <h2>Seller</h2>
+        <p>Untuk memperkaya database kami membuka peluang bagi konter-konter untuk menawarkan produk jualanya untuk di tampilkan di website kami.</p>
+      </div>
+      <div class="row mb-3 d-flex align-items-center justify-content-center">
+        <?php
+        $a = 1;
+        foreach ($seller as $toko) {
+          if ($a == 5) {
+            $a = 0;
+        ?>
+      </div>
+      <div class="row mb-3 d-flex align-items-center justify-content-center">
+      <?php
+          }
+      ?>
+      <div class="col-lg-3 col-md-4 col-6 mb-3 d-flex align-items-center justify-content-center">
+        <a href="/detail_seller/<?= $toko['slug']; ?>">
+          <div class="card">
+            <img src="/assets/image/profile/<?= $toko['image_profile']; ?>" class="card-img-top" alt="">
+            <div class="card-body">
+              <p class="card-text text-center text-dark"><?= $toko['full_name']; ?></p>
+            </div>
+          </div>
+        </a>
+      </div>
+    <?php
+          $a++;
+        }
+    ?>
+      </div>
     </div>
   </section><!-- End Partner Section -->
 

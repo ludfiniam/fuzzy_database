@@ -12,26 +12,26 @@ class PhoneModel extends Model
 
     public function allSmartphonePaginationAdmin($id_seller)
     {
-        $data = $this->select('t_smartphone.id as id,slug,nama_smartphone,merek,tahun,harga,t_account.full_name as nama_seller')->join('t_account', 't_account.id=t_smartphone.id_seller')->where('id_seller', $id_seller);
+        $data = $this->select('t_smartphone.id as id,t_smartphone.slug as slug,nama_smartphone,merek,tahun,harga,t_account.full_name as nama_seller')->join('t_account', 't_account.id=t_smartphone.id_seller')->where('id_seller', $id_seller);
         return $data;
     }
 
     public function allSmartphonePaginationForPublic()
     {
-        $data = $this->select('t_smartphone.id as id,slug,nama_smartphone,merek,tahun,harga,t_account.full_name as nama_seller,image1,image2,image3')->join('t_account', 't_account.id=t_smartphone.id_seller');
+        $data = $this->select('t_smartphone.id as id,t_smartphone.slug as slug,nama_smartphone,merek,tahun,harga,t_account.full_name as nama_seller,image1,image2,image3')->join('t_account', 't_account.id=t_smartphone.id_seller');
         return $data;
     }
 
     public function FindAllSmartphonePaginationAdmin($keyword, $id_seller)
     {
-        $data = $this->select('t_smartphone.id as id,slug,nama_smartphone,merek,tahun,harga,t_account.full_name as nama_seller')->join('t_account', 't_account.id=t_smartphone.id_seller');
+        $data = $this->select('t_smartphone.id as id,t_smartphone.slug as slug,nama_smartphone,merek,tahun,harga,t_account.full_name as nama_seller')->join('t_account', 't_account.id=t_smartphone.id_seller');
         $data = $data->like('nama_smartphone', $keyword)->orLike('merek', $keyword)->orLike('t_account.full_name', $keyword)->where('id_seller', $id_seller);
         return $data;
     }
 
     public function FindAllSmartphonePaginationForPublic($keyword)
     {
-        $data = $this->select('t_smartphone.id as id,slug,nama_smartphone,merek,tahun,harga,t_account.full_name as nama_seller,image1,image2,image3')->join('t_account', 't_account.id=t_smartphone.id_seller');
+        $data = $this->select('t_smartphone.id as id,t_smartphone.slug as slug,nama_smartphone,merek,tahun,harga,t_account.full_name as nama_seller,image1,image2,image3')->join('t_account', 't_account.id=t_smartphone.id_seller');
         $data = $data->like('nama_smartphone', $keyword)->orLike('merek', $keyword)->orLike('t_account.full_name', $keyword);
         return $data;
     }

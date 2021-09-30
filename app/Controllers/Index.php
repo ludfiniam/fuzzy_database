@@ -70,8 +70,10 @@ class Index extends BaseController
     public function index()
     {
         $merek = $this->MerekModel->findAll();
+        $seleer = $this->loginModel->select('full_name, slug, image_profile')->findAll();
         $data = [
             'merek' => $merek,
+            'seller' => $seleer,
         ];
         return view('Public/dashboard', $data);
     }
@@ -134,6 +136,29 @@ class Index extends BaseController
             'data_inpage'     => $data_inpage,
         ];
         return view('Public/search', $data);
+    }
+
+    public function detail_smartphone($get)
+    {
+        $smartphone = $this->Data_smartphone->findSmartphoneBySlug($get);
+        $seller     = $this->loginModel->select('slug,full_name,telp,address,image_profile')->where('id=' . $smartphone['id_seller'])->first();
+        $data = [
+            'phone' => $smartphone,
+            'seller' => $seller
+        ];
+        return view('Public/detail_smartphone', $data);
+    }
+
+    public function detail_seller($slug_toko)
+    {
+        $seller     = $this->loginModel->select('id,slug,full_name,telp,address,image_profile')->where('slug="' . $slug_toko . '"')->first();
+        $smartphone = $this->Data_smartphone->where('id_seller', $seller['id'])->findAll();
+        $data = [
+            'seller'        => $seller,
+            'smartphone'   => $smartphone,
+        ];
+        //dd($data);
+        return view('Public/detail_seller', $data);
     }
 
     public function login()

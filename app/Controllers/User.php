@@ -786,6 +786,7 @@ class User extends BaseController
 		$update['telp'] = '0' . $update['telp'];
 		$data = [
 			'id'            => $update['id'],
+			'slug'			=> url_title($update['full_name'] . '_telp-' . $update['telp'], '-', true),
 			'full_name'     => $update['full_name'],
 			'username'      => $update['username'],
 			'email'         => $update['email'],
@@ -831,6 +832,6 @@ class User extends BaseController
 	public function logout()
 	{
 		session()->destroy();
-		return redirect()->to('/index/login');
+		return redirect()->to('/login');
 	}
 }

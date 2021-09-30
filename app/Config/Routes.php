@@ -34,6 +34,8 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Index::index');
 $routes->get('/search', 'Index::search');
 $routes->get('/login', 'Index::login');
+$routes->get('/detail_smartphone/(:any)', 'Index::detail_smartphone/$1');
+$routes->get('/detail_seller/(:any)', 'Index::detail_seller/$1');
 $routes->delete('/admin/datasmartphone/(:num)', 'Admin::delete_smartphone/$1');
 $routes->delete('/user/data_smartphone/(:num)', 'User::delete_smartphone/$1');
 $routes->delete('/admin/data_seller/(:num)', 'Admin::deleteSeller/$1');

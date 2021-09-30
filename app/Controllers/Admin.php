@@ -874,6 +874,7 @@ class Admin extends BaseController
 		$data =
 			[
 				'id'            => $update['id'],
+				'slug'			=> url_title($update['full_name'] . '_telp-0' . $update['telp'], '-', true),
 				'username'      => $update['username'],
 				'email'         => $update['email'],
 				'telp'          => '0' . $update['telp'],
@@ -1093,6 +1094,7 @@ class Admin extends BaseController
 		$update['telp'] = '0' . $update['telp'];
 		$data = [
 			'id'            => $update['id'],
+			'slug'			=> url_title($update['full_name'] . '_telp-' . $update['telp'], '-', true),
 			'full_name'     => $update['full_name'],
 			'username'      => $update['username'],
 			'email'         => $update['email'],
@@ -2800,6 +2802,6 @@ class Admin extends BaseController
 	public function logout()
 	{
 		session()->destroy();
-		return redirect()->to('/index/login');
+		return redirect()->to('/login');
 	}
 }
