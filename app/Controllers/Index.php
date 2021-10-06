@@ -112,6 +112,10 @@ class Index extends BaseController
             $FindSmartphone = $this->Data_smartphone->allSmartphonePaginationForPublic();
         }
 
+        //Filter
+
+        $FindSmartphone = $this->Data_smartphone->FuzzyDatabaseAND($FindSmartphone, $session->get('fk_merek'), $session->get('fk_harga'), $session->get('fk_ram'), $session->get('fk_internal'), $session->get('fk_tahun'), $session->get('fk_ui_os'), $session->get('fk_jns_processor'), $session->get('fk_speed_processor'), $session->get('fk_jenis_gpu'), $session->get('fk_antutu'), $session->get('fk_bahan_body'), $session->get('fk_resolusi_layar'), $session->get('fk_tipe_layar'), $session->get('fk_proteksi_layar'), $session->get('fk_kamera_belakang'), $session->get('fk_kapasitas_batrai'), $session->get('fk_usb_tipe'));
+
         $data = [
             'smartphone' => $FindSmartphone->paginate($data_inpage, 't_smartphone'),
             'merek'     => $merek,

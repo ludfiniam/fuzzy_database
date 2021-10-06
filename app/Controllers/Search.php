@@ -10,6 +10,7 @@ class Search extends BaseController
         $post = $this->request->getPost();
         $data = [
             'data_filter'   => 'Yes',
+            'filter'        => $post['filter'],
             'fk_merek'      => $post['merek'],
             'fk_harga'      => $post['harga'],
             'fk_ram'        => $post['ram'],
@@ -37,6 +38,7 @@ class Search extends BaseController
         $session = session();
         $data = [
             'data_filter',
+            'filter',
             'fk_merek',
             'fk_harga',
             'fk_ram',

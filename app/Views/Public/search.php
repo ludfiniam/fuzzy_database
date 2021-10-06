@@ -19,9 +19,11 @@ function rupiah($angka)
 			<p></p>
 			<p></p>
 			<h1 class="text-center">Search Smartphone</h1>
+
 		</div>
 		<div class="row">
 			<?php d(session()->get()) ?>
+			<?php d($smartphone) ?>
 			<div class="col-xs-2 col-md-2 mb-3">
 				<div class="card">
 					<div class="card-header">
@@ -106,7 +108,6 @@ function rupiah($angka)
 								<div class="col-12">
 									<label for="ui_os">UI OS</label>
 									<select class="form-control text-center" name="ui_os" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
-										<option>All</option>
 										<option value="0">All</option>
 										<?php foreach ($ui_os as $UI) {
 										?>
@@ -271,9 +272,18 @@ function rupiah($angka)
 							</div>
 							<div class="row mb-2">
 								<div class="col-12">
+									<label for="filter">Filter</label>
+									<select class="form-control text-center" name="filter" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
+										<option value="and" <?= session()->get('filter') == 'and' ? 'selected' : ''; ?>>AND</option>
+										<option value="or" <?= session()->get('filter') == 'or' ? 'selected' : ''; ?>>OR</option>
+									</select>
+								</div>
+							</div>
+							<div class="row mb-2">
+								<div class="col-12">
 									<?php if (session()->get('data_filter') == 'Yes') {
 									?>
-										<a href="/search/delete_filter"><button class="btn btn-danger">hapus filter</button></a>
+										<a href="/search/delete_filter" class="btn btn-danger">Hapus Filter</a>
 									<?php
 									} else {
 									?>
