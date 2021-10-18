@@ -22,8 +22,12 @@ function rupiah($angka)
 
 		</div>
 		<div class="row">
-			<?php d(session()->get()) ?>
-			<?php d($smartphone) ?>
+			<?php
+			//Melihat hasil dari search dan session
+
+			// d(session()->get());
+			d($smartphone);
+			?>
 			<div class="col-xs-2 col-md-2 mb-3">
 				<div class="card">
 					<div class="card-header">
@@ -55,6 +59,19 @@ function rupiah($angka)
 												<option value="<?= $duit['id']; ?>" <?= session()->get('fk_harga') == $duit['id'] ? 'selected' : ''; ?>><?= $duit['ket_status']; ?></option>
 										<?php
 											}
+										} ?>
+									</select>
+								</div>
+							</div>
+							<div class="row mb-2">
+								<div class="col-12">
+									<label for="network">Network Suport</label>
+									<select class="form-control text-center" name="network" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
+										<option value="0">All</option>
+										<?php foreach ($network as $net) {
+										?>
+											<option value="<?= $net; ?>" <?= session()->get('fk_network') == $net ? 'selected' : ''; ?>><?= $net; ?></option>
+										<?php
 										} ?>
 									</select>
 								</div>
@@ -244,6 +261,16 @@ function rupiah($angka)
 							</div>
 							<div class="row mb-2">
 								<div class="col-12">
+									<label for="nfc">NFC</label>
+									<select class="form-control text-center" name="nfc" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
+										<option value="0">All</option>
+										<option value="Yes" <?= session()->get('fk_nfc') == 'Yes' ? 'selected' : ''; ?>>Ya</option>
+										<option value="No" <?= session()->get('fk_nfc') == 'No' ? 'selected' : ''; ?>>Tidak</option>
+									</select>
+								</div>
+							</div>
+							<div class="row mb-2">
+								<div class="col-12">
 									<label for="kapasitas_batrai">Kapasitas Batrai</label>
 									<select class="form-control text-center" name="kapasitas_batrai" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
 										<option value="0">All</option>
@@ -421,7 +448,32 @@ function rupiah($angka)
 														</div>
 													</div>
 													<div class="col-xs-2 col-md-2 mb-3  d-flex align-items-center justify-content-center">
-														<a href="/detail_smartphone/<?= $smartphone['slug']; ?>" class="btn btn-primary text-center">detail</a>
+														<?php if (session()->get('data_filter')) {
+															if (session()->get('fk_harga') != 0 or session()->get('fk_ram') != 0 or session()->get('fk_internal') != 0 or session()->get('fk_tahun') != 0 or session()->get('fk_speed_processor') != 0 or session()->get('fk_antutu') != 0 or session()->get('fk_resolusi_layar') != 0 or session()->get('fk_kamera_belakang') != 0 or session()->get('fk_kapasitas_batrai') != 0) {
+														?>
+																<div class="d-flex flex-column bd-highlight">
+																	<div class="p-2 bd-highlight text-center">
+																		<div class="badge bg-Light text-dark" style="width: 4rem;">
+																			nilai :
+																		</div>
+																		<div class="badge bg-primary text-wrap" style="width: 5rem;">
+																			<?= ($smartphone['fungsi_keanggotaan_database_tahani_' . session()->get('filter')]); ?>
+																		</div>
+																	</div>
+																	<div class="p-2 bd-highlight text-center">
+																		<a href="/detail_smartphone/<?= $smartphone['slug']; ?>" class="btn btn-primary text-center">detail</a>
+																	</div>
+																</div>
+															<?php
+															} else { ?>
+																<a href="/detail_smartphone/<?= $smartphone['slug']; ?>" class="btn btn-primary text-center">detail</a>
+															<?php
+															}
+														} else {
+															?>
+															<a href="/detail_smartphone/<?= $smartphone['slug']; ?>" class="btn btn-primary text-center">detail</a>
+														<?php
+														} ?>
 													</div>
 												</div>
 											</div>

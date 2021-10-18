@@ -301,7 +301,7 @@ function titik($angka)
                                 <p class="text-center">Fingerprint</p>
                             </div>
                             <div class="col-6">
-                                <div type="text" class="form-control form-control-sm text-center mb-2" id="wlan">
+                                <div type="text" class="form-control form-control-sm text-center mb-2" id="finger">
                                     <?= $phone['fingerprint'] != "Yes" ? 'No <span class="text-danger" data-feather="x-circle"></span>' : 'Yes <span class="text-success" data-feather="check-circle"></span>' ?>
                                 </div>
                             </div>
@@ -311,8 +311,18 @@ function titik($angka)
                                 <p class="text-center">Face Unlock</p>
                             </div>
                             <div class="col-6">
-                                <div type="text" class="form-control form-control-sm text-center mb-2" id="wlan">
+                                <div type="text" class="form-control form-control-sm text-center mb-2" id="faceunlock">
                                     <?= $phone['face_sensor'] != "Yes" ? 'No <span class="text-danger" data-feather="x-circle"></span>' : 'Yes <span class="text-success" data-feather="check-circle"></span>' ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-6">
+                                <p class="text-center">NFC</p>
+                            </div>
+                            <div class="col-6">
+                                <div type="text" class="form-control form-control-sm text-center mb-2" id="nfc">
+                                    <?= $phone['nfc'] != "Yes" ? 'No <span class="text-danger" data-feather="x-circle"></span>' : 'Yes <span class="text-success" data-feather="check-circle"></span>' ?>
                                 </div>
                             </div>
                         </div>

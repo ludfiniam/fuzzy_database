@@ -42,6 +42,7 @@ class Index extends BaseController
     protected $FkResolusiKamera;
     protected $FkBatrai;
     protected $CasConectorModel;
+    protected $network = ['5G', '4G', '3G', '2G'];
 
 
     public function __construct()
@@ -69,11 +70,13 @@ class Index extends BaseController
 
     public function index()
     {
-        $merek = $this->MerekModel->findAll();
+        $merek = $this->MerekModel->orderBy('id', 'RANDOM')->findAll();
+        $sample = $this->Data_smartphone->select('slug, nama_smartphone, merek, image1')->where('image1 != "default.jpg" and image1 != ""')->orderBy('t_smartphone.id', 'RANDOM')->findAll();
         $seleer = $this->loginModel->select('full_name, slug, image_profile')->findAll();
         $data = [
             'merek' => $merek,
             'seller' => $seleer,
+            'sample' => $sample,
         ];
         return view('Public/dashboard', $data);
     }
@@ -97,24 +100,25 @@ class Index extends BaseController
         $resolusi_kamera = $this->FkResolusiKamera->findAll();
         $batrai     = $this->FkBatrai->findAll();
         $cas        = $this->CasConectorModel->findAll();
+        $network    = $this->network;
 
         $session = session();
         //-------------------Validasi GET----------------------- 
         $CURRENT = $this->request->getVar('page_t_smartphone') ? $this->request->getVar('page_t_smartphone') : 1;
         //-------------Jumlah data di dalam table---------------
-        $data_inpage = 5;
+        $data_inpage = 10;
         //------------------------------------------------------
-        $keyword = $this->request->getVar('key_smartphone');
 
         if (session()->get('key_smartphone') != Null) {
-            $FindSmartphone = $this->Data_smartphone->FindAllSmartphonePaginationForPublic(session()->get('key_smartphone'));
+            $FindSmartphone = $this->Data_smartphone->FindAllSmartphonePaginationForPublic(session()->get('key_smartphone'), $session->get('data_filter'));
         } else {
-            $FindSmartphone = $this->Data_smartphone->allSmartphonePaginationForPublic();
+            $FindSmartphone = $this->Data_smartphone->allSmartphonePaginationForPublic($session->get('data_filter'));
         }
 
         //Filter
-
-        $FindSmartphone = $this->Data_smartphone->FuzzyDatabaseAND($FindSmartphone, $session->get('fk_merek'), $session->get('fk_harga'), $session->get('fk_ram'), $session->get('fk_internal'), $session->get('fk_tahun'), $session->get('fk_ui_os'), $session->get('fk_jns_processor'), $session->get('fk_speed_processor'), $session->get('fk_jenis_gpu'), $session->get('fk_antutu'), $session->get('fk_bahan_body'), $session->get('fk_resolusi_layar'), $session->get('fk_tipe_layar'), $session->get('fk_proteksi_layar'), $session->get('fk_kamera_belakang'), $session->get('fk_kapasitas_batrai'), $session->get('fk_usb_tipe'));
+        if ($session->get('data_filter') == "Yes") {
+            $FindSmartphone = $this->Data_smartphone->FuzzyDatabase($session->get('filter'), $FindSmartphone, $session->get('fk_network'), $session->get('fk_nfc'), $session->get('fk_merek'), $session->get('fk_harga'), $session->get('fk_ram'), $session->get('fk_internal'), $session->get('fk_tahun'), $session->get('fk_ui_os'), $session->get('fk_jns_processor'), $session->get('fk_speed_processor'), $session->get('fk_jenis_gpu'), $session->get('fk_antutu'), $session->get('fk_bahan_body'), $session->get('fk_resolusi_layar'), $session->get('fk_tipe_layar'), $session->get('fk_proteksi_layar'), $session->get('fk_kamera_belakang'), $session->get('fk_kapasitas_batrai'), $session->get('fk_usb_tipe'));
+        }
 
         $data = [
             'smartphone' => $FindSmartphone->paginate($data_inpage, 't_smartphone'),
@@ -135,6 +139,7 @@ class Index extends BaseController
             'resolusi_kamera' => $resolusi_kamera,
             'batrai'    => $batrai,
             'cas'       => $cas,
+            'network'   => $network,
             'pager'     => $this->Data_smartphone->pager,
             'CURRENT'   => $CURRENT,
             'data_inpage'     => $data_inpage,

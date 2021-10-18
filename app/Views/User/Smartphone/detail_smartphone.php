@@ -336,7 +336,13 @@ function rupiah($angka)
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <div class="col-md-12">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="nfc">NFC Sensor</label>
+                                        <input class="form-control" type="text" name="nfc" value="<?= $smartphone['nfc']; ?>" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
                                     <div class="form-group">
                                         <label for="antutu_score">Score Antutu</label>
                                         <input class="form-control" type="text" name="antutu_score" value="<?= $smartphone['test_antutu']; ?>" readonly>

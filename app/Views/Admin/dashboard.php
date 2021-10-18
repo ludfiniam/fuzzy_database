@@ -5,6 +5,10 @@
 <div class="container-fluid">
     <p></p>
     <div class="row"></div>
+    <?php
+    // d($count_phoneSeller);
+    // d($data_seller);
+    ?>
     <div class="row">
         <div class="col-md-6 mb-3">
             <div class="card text-black ">
@@ -15,19 +19,19 @@
                     <div class="row mb-3">
                         <div class="col">
                             <label for="jsa">Sales aktive</label>
-                            <input type="text" class="form-control" value="0 Orang" disabled>
+                            <input type="text" class="form-control" value="<?= $activeSeller == null ? '0' : $AllSeller['jml']; ?> Seller" disabled>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col">
                             <label for="jsa">Sales non-aktive</label>
-                            <input type="text" class="form-control" value="0 Orang" disabled>
+                            <input type="text" class="form-control" value="<?= $NonactiveSeller == null ? '0' : $AllSeller['jml']; ?> Seller" disabled>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col">
                             <label for="jsa">Semua Sales</label>
-                            <input type="text" class="form-control" value="0 Orang" disabled>
+                            <input type="text" class="form-control" value="<?= $AllSeller == null ? '0' : $AllSeller['jml']; ?> Seller" disabled>
                         </div>
                     </div>
                 </div>
@@ -41,52 +45,39 @@
                     <h4 class="card-title font-weight-bolder">Jumlah data Smartphone</h4>
                 </div>
                 <div class="card-body">
-                    <div class="row mb-3">
-                        <div class="col">
-                            <label for="">
-                                SAMSUNG
-                            </label>
-                            <input type="text" value="0 Pcs" class="form-control" disabled>
-                        </div>
-                        <div class="col">
-                            <label for="">
-                                XIOMI
-                            </label>
-                            <input type="text" value="0 Pcs" class="form-control" disabled>
-                        </div>
-                        <div class="col">
-                            <label for="">
-                                OPPO
-                            </label>
-                            <input type="text" value="0 Pcs" class="form-control" disabled>
-                        </div>
+                    <?php
+                    $col = 1;
+                    $jmlPhone = 0;
+                    ?>
+                    <div class="row mb-3 d-flex justify-content-center">
+                        <?php
+                        foreach ($count_merek as $merek) {
+                        ?>
+                            <div class="col">
+                                <label for="<?= $merek['merek']; ?>">
+                                    <?= $merek['merek']; ?>
+                                </label>
+                                <input type="text" value="<?= $merek['jumlah_phone']; ?> Pcs" class="form-control" disabled>
+                            </div>
+                            <?php
+                            $jmlPhone = $merek['jumlah_phone'] + $jmlPhone;
+                            if ($col == 3) {
+                            ?>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col">
-                            <label for="">
-                                VIVO
-                            </label>
-                            <input type="text" value="0 Pcs" class="form-control" disabled>
-                        </div>
-                        <div class="col">
-                            <label for="">
-                                ASUZ
-                            </label>
-                            <input type="text" value="0 Pcs" class="form-control" disabled>
-                        </div>
-                        <div class="col">
-                            <label for="">
-                                Realme
-                            </label>
-                            <input type="text" value="0 Pcs" class="form-control" disabled>
-                        </div>
+                    <div class="row mb-3 d-flex justify-content-center">
+                <?php
+                                $col = 1;
+                            }
+                            $col++;
+                        }
+                ?>
                     </div>
                     <div class="row mb-3">
                         <div class="col">
                             <label for="">
                                 Semua Smartphone
                             </label>
-                            <input type="text" value="0 Pcs" class="form-control" disabled>
+                            <input type="text" value="<?= $jmlPhone; ?> Pcs" class="form-control" disabled>
                         </div>
                     </div>
                 </div>
@@ -116,7 +107,32 @@
                                         <th class="text-center">Jumlah Smartphone</th>
                                     </thead>
                                     <tbody>
-                                      
+                                        <?php
+                                        $a = 1 + ($data_inpage * ($CURRENT - 1));
+                                        foreach ($data_seller as $seller) {
+                                        ?>
+                                            <tr>
+                                                <th scope="row" class="text-center"><?= $a; ?></th>
+                                                <td><?= $seller['name_seller']; ?></td>
+                                                <td class="text-center">
+                                                    <?= $seller['active_account'] == 'active' ? '
+                                                    <span class="badge bg-success text-light">' . $seller['active_account'] . '</span>
+                                                    ' : '
+                                                    <span class="badge bg-secondary text-light">' . $seller['active_account'] . '</span>
+                                                    '; ?>
+                                                </td>
+                                                <td><?= $seller['username']; ?></td>
+                                                <td><?= $seller['email']; ?></td>
+                                                <td class="text-center">
+                                                    <h5>
+                                                        <span class="badge rounded-pill bg-info text-light"><?= $seller['jumlah_phone']; ?> <span data-feather="smartphone"></span></span>
+                                                    </h5>
+                                                </td>
+                                            </tr>
+                                        <?php
+                                            $a++;
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -124,10 +140,11 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <!-- <?//= $pager->links('seller', 'mobil_page'); ?> -->
+                            <?= $pager->links('t_account', 'smartphone') ?>
                         </div>
                     </div>
                 </div>
+                <div class="card-footer"></div>
             </div>
         </div>
     </div>

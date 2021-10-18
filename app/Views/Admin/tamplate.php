@@ -7,7 +7,14 @@
     <meta name="description" content="">
     <meta name="author" content="Ahmad Ludfi Ni'am">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>Dashboard Admin</title>
+    <title>Phoneku</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="/favicon.png" rel="icon">
+    <link href="/assets/dashboard/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
 
@@ -36,7 +43,7 @@
 
 <body>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="/admin"><span data-feather="smartphone"></span> Smartphoneku</a>
+        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="/admin">Phoneku</a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

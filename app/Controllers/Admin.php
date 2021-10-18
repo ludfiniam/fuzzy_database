@@ -128,12 +128,29 @@ class Admin extends BaseController
 		$countSeller = $this->user->select('hak_akses,count(hak_akses) as jml')->where('hak_akses', '2')->groupBy('hak_akses')->first();
 		$countSellerActive = $this->user->select('active_account,count(active_account) as jml')->where('active_account', 'active')->where('hak_akses', '2')->groupBy('active_account')->first();
 		$countSellerNonActive = $this->user->select('active_account,count(active_account) as jml')->where('active_account', 'non-active')->where('hak_akses', '2')->groupBy('active_account')->first();
+
+		$merek_count = $this->merek->select('t_jenis_merek.nama_merek as merek, count(t_smartphone.merek) as jumlah_phone')->join('t_smartphone', 't_jenis_merek.nama_merek=t_smartphone.merek')->groupBy('t_smartphone.merek')->findAll();
+		$seller_phone_count = $this->user->select('t_account.id as id, t_account.full_name as name_seller, active_account, username, email, count(t_smartphone.id_seller) as jumlah_phone')->join('t_smartphone', 't_account.id=t_smartphone.id_seller', 'left')->groupBy('t_account.id');
+
+		$session = session();
+		//-------------------Validasi GET----------------------- 
+		$CURRENT = $this->request->getVar('page_seller') ? $this->request->getVar('page_seller') : 1;
+		//-------------Jumlah data di dalam table---------------
+		$data_inpage = 5;
+		//------------------------------------------------------
+		//////////////////////////////////////////////////////////////////
 		$data = [
 			'AllSeller' => $countSeller,
 			'activeSeller' => $countSellerActive,
-			'NonactiveSeller' => $countSellerNonActive
+			'NonactiveSeller' => $countSellerNonActive,
+			'count_merek'  => $merek_count,
+			'count_phoneSeller' => $seller_phone_count,
+			'data_seller' 	=> $seller_phone_count->paginate($data_inpage, 't_account'),
+			'pager'				=> $this->user->pager,
+			'CURRENT'       => $CURRENT,
+			'data_inpage'     => $data_inpage,
 		];
-		return view('Admin/dashboard');
+		return view('Admin/dashboard', $data);
 	}
 
 	////////////////////////////////////////////////////////////////
@@ -323,6 +340,7 @@ class Admin extends BaseController
 			'bluetooth'			=> $insertAll['bluetooth'],
 			'infrared'			=> $insertAll['infrared'],
 			'radio'				=> $insertAll['radio'],
+			'nfc'				=> $insertAll['nfc'],
 			'usb_tipe'			=> $insertAll['tipe_usb'],
 			'fingerprint'		=> $insertAll['fingerprint'],
 			'face_sensor'		=> $insertAll['faceunlock'],
@@ -533,6 +551,7 @@ class Admin extends BaseController
 			'bluetooth'			=> $insertAll['bluetooth'],
 			'infrared'			=> $insertAll['infrared'],
 			'radio'				=> $insertAll['radio'],
+			'nfc'				=> $insertAll['nfc'],
 			'usb_tipe'			=> $insertAll['tipe_usb'],
 			'fingerprint'		=> $insertAll['fingerprint'],
 			'face_sensor'		=> $insertAll['faceunlock'],

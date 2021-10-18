@@ -36,6 +36,9 @@
 
 <body class="text-center">
     <form class="form-signin" method="post" action="/index/try_login">
+        <a href="/"><img src="/assets/login/logo-phoneku.png" class="rounded mx-auto d-block" height="40" alt=""></a>
+        <p></p>
+        <p></p>
         <h1 class="h3 mb-3 font-weight-normal">Login form</h1>
         <?php if (session()->getFlashdata('msg')) : ?>
             <div class="alert alert-danger"><?= session()->getFlashdata('msg') ?></div>
@@ -51,7 +54,7 @@
         <div class="text-center">
             <a href="https://api.whatsapp.com/send?phone=628985222402&text=Saya%20ingin%20membuat%20akun%20user%20di%20sistem%20mobilku%20anda%2C%20apakah%20bisa%20di%20bantu">Daftar sebagai user</a>
         </div>
-        <p class="mt-5 mb-3 text-muted">&copy; smartphoneku</p>
+        <p class="mt-5 mb-3 text-muted">&copy; Phoneku</p>
     </form>
 </body>
 

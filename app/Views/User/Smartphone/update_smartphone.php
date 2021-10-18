@@ -33,7 +33,7 @@
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="nama_smartphone">Nama smartphone</label>
-                                            <input type="text" class="form-control" name="nama_smartphone" placeholder="Masukan nama smartphone..." value="<?=(old('nama_smartphone')!=null)?old('nama_smartphone'):$smartphone['nama_smartphone']; ?>" required>
+                                            <input type="text" class="form-control" name="nama_smartphone" placeholder="Masukan nama smartphone..." value="<?= (old('nama_smartphone') != null) ? old('nama_smartphone') : $smartphone['nama_smartphone']; ?>" required>
                                             <input type="hidden" name="id" value="<?= $smartphone['id']; ?>">
                                             <input type="hidden" name="slug" value="<?= $smartphone['slug']; ?>">
                                             <input type="hidden" name="image1_1" value="<?= $smartphone['image1']; ?>">
@@ -48,7 +48,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">Rp.</span>
                                                 </div>
-                                                <input type="number" name="harga" class="form-control" placeholder="ex: 1250000" aria-describedby="basic-addon2" min="100000" max="100000000" value="<?= (old('harga')!=null)?old('harga'):$smartphone['harga']; ?>" required>
+                                                <input type="number" name="harga" class="form-control" placeholder="ex: 1250000" aria-describedby="basic-addon2" min="100000" max="100000000" value="<?= (old('harga') != null) ? old('harga') : $smartphone['harga']; ?>" required>
                                                 <div class="input-group-append">
                                                     <span class="input-group-text" id="basic-addon2">.00</span>
                                                 </div>
@@ -122,7 +122,7 @@
                                     <div class="col-md-4">
                                         <label for="tebal">Tebal Smartphone</label>
                                         <div class="input-group mb-3">
-                                            <input type="number" step="0.01" name="tebal" class="form-control" placeholder="ex: 12.49" aria-describedby="basic-addon2" min="0.01" max="100.00" value="<?= (old('tebal')!=null)?old('tebal'):$smartphone['tebal']; ?>" required>
+                                            <input type="number" step="0.01" name="tebal" class="form-control" placeholder="ex: 12.49" aria-describedby="basic-addon2" min="0.01" max="100.00" value="<?= (old('tebal') != null) ? old('tebal') : $smartphone['tebal']; ?>" required>
                                             <div class="input-group-append">
                                                 <span class="input-group-text" id="basic-addon2">mm</span>
                                             </div>
@@ -131,7 +131,7 @@
                                     <div class="col-md-4">
                                         <label for="berat">Berat</label>
                                         <div class="input-group mb-3">
-                                            <input type="number" step="0.1" name="berat" class="form-control" placeholder="ex: 12.9" aria-describedby="basic-addon2" min="0.1" max="1000.0" value="<?= (old('berat')!=null)?old('berat'):$smartphone['berat']; ?>" required>
+                                            <input type="number" step="0.1" name="berat" class="form-control" placeholder="ex: 12.9" aria-describedby="basic-addon2" min="0.1" max="1000.0" value="<?= (old('berat') != null) ? old('berat') : $smartphone['berat']; ?>" required>
                                             <div class="input-group-append">
                                                 <span class="input-group-text" id="basic-addon2">grm</span>
                                             </div>
@@ -150,7 +150,7 @@
                                     <div class="col-md-4">
                                         <label for="resolusi_layar">Resolusi Layar</label>
                                         <div class="input-group mb-3">
-                                            <input type="number" step="0.01" name="resolusi_layar" class="form-control" placeholder="ex: 6.29" aria-describedby="basic-addon3" min="0.01" max="100.00" value="<?= (old('resolusi_layar')!=null)?old('resolusi_layar'):$smartphone['resolution_layar']; ?>" required>
+                                            <input type="number" step="0.01" name="resolusi_layar" class="form-control" placeholder="ex: 6.29" aria-describedby="basic-addon3" min="0.01" max="100.00" value="<?= (old('resolusi_layar') != null) ? old('resolusi_layar') : $smartphone['resolution_layar']; ?>" required>
                                             <div class="input-group-append">
                                                 <span class="input-group-text" id="basic-addon3">inch</span>
                                             </div>
@@ -192,7 +192,7 @@
                                         <div class="form-group">
                                             <label for="resolusi_main_camera">Resolusi kamera belakang</label>
                                             <div class="input-group mb-3">
-                                                <input type="number" step="0.1" name="resolusi_main_camera" class="form-control" placeholder="VGA = 0.5" aria-describedby="basic-addon2" min="0.0" max="100.0" value="<?= (old('resolusi_main_camera')!=null)?old('resolusi_main_camera'):$smartphone['resolusi_main_camera']; ?>" required>
+                                                <input type="number" step="0.1" name="resolusi_main_camera" class="form-control" placeholder="VGA = 0.5" aria-describedby="basic-addon2" min="0.0" max="100.0" value="<?= (old('resolusi_main_camera') != null) ? old('resolusi_main_camera') : $smartphone['resolusi_main_camera']; ?>" required>
                                                 <div class="input-group-append">
                                                     <span class="input-group-text" id="basic-addon2">MP</span>
                                                 </div>
@@ -213,7 +213,7 @@
                                         <div class="form-group">
                                             <label for="resolusi_front_camera">Resolusi kamera depan</label>
                                             <div class="input-group mb-3">
-                                                <input type="number" step="0.1" name="resolusi_front_camera" class="form-control" placeholder="VGA = 0.5" aria-describedby="basic-addon2" min="0.0" max="100.0" value="<?= (old('resolusi_front_camera')!=null)?old('resolusi_front_camera'):$smartphone['resolusi_selfie_camera']; ?>" required>
+                                                <input type="number" step="0.1" name="resolusi_front_camera" class="form-control" placeholder="VGA = 0.5" aria-describedby="basic-addon2" min="0.0" max="100.0" value="<?= (old('resolusi_front_camera') != null) ? old('resolusi_front_camera') : $smartphone['resolusi_selfie_camera']; ?>" required>
                                                 <div class="input-group-append">
                                                     <span class="input-group-text" id="basic-addon2">MP</span>
                                                 </div>
@@ -235,14 +235,14 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="nama_chipset">Seri Processor Lengkap</label>
-                                            <input class="form-control" type="text" name="nama_chipset" placeholder="ex: Mediatek MT6580" value="<?= (old('nama_chipset')!=null)?old('nama_chipset'):$smartphone['nama_chipset']; ?>" required>
+                                            <input class="form-control" type="text" name="nama_chipset" placeholder="ex: Mediatek MT6580" value="<?= (old('nama_chipset') != null) ? old('nama_chipset') : $smartphone['nama_chipset']; ?>" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="clock_speed_cpu">Clock Speed CPU</label>
                                             <div class="input-group mb-3">
-                                                <input type="number" step="0.1" name="clock_speed_cpu" class="form-control" placeholder="ex: 1.2" aria-describedby="basic-addon3" min="0.1" max="100.00" value="<?= (old('clock_speed_cpu')!=null)?old('clock_speed_cpu'):$smartphone['clock_speed_cpu']; ?>" required>
+                                                <input type="number" step="0.1" name="clock_speed_cpu" class="form-control" placeholder="ex: 1.2" aria-describedby="basic-addon3" min="0.1" max="100.00" value="<?= (old('clock_speed_cpu') != null) ? old('clock_speed_cpu') : $smartphone['clock_speed_cpu']; ?>" required>
                                                 <div class="input-group-append">
                                                     <span class="input-group-text" id="basic-addon3">GHz</span>
                                                 </div>
@@ -274,7 +274,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="nama_gpu">Seri GPU</label>
-                                            <input class="form-control" type="text" name="nama_gpu" value="<?= (old('nama_gpu')!=null)?old('nama_gpu'):$smartphone['nama_lengkap_gpu']; ?>" placeholder="ex : Adreno 660">
+                                            <input class="form-control" type="text" name="nama_gpu" value="<?= (old('nama_gpu') != null) ? old('nama_gpu') : $smartphone['nama_lengkap_gpu']; ?>" placeholder="ex : Adreno 660">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -395,7 +395,7 @@
                                         <div class="form-group">
                                             <label for="kapasitas_batrai">Kapasitas Batrai</label>
                                             <div class="input-group mb-3">
-                                                <input type="number" step="1" name="kapasitas_batrai" class="form-control" placeholder="ex: 6000" aria-describedby="basic-addon3" min="1" max="99999" value="<?= (old('kapasitas_batrai')!=null)?old('kapasitas_batrai'):$smartphone['kapasitas_batrai']; ?>" required>
+                                                <input type="number" step="1" name="kapasitas_batrai" class="form-control" placeholder="ex: 6000" aria-describedby="basic-addon3" min="1" max="99999" value="<?= (old('kapasitas_batrai') != null) ? old('kapasitas_batrai') : $smartphone['kapasitas_batrai']; ?>" required>
                                                 <div class="input-group-append">
                                                     <span class="input-group-text" id="basic-addon3">mAh</span>
                                                 </div>
@@ -414,10 +414,19 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <div class="col-md-12">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="nfc">NFC Sensor</label>
+                                            <select class="form-control" name="nfc">
+                                                <option <?= ($smartphone['nfc'] == 'No') ? 'selected' : '' ?> value="No">No</option>
+                                                <option <?= ($smartphone['nfc'] == 'Yes') ? 'selected' : '' ?> value="Yes">Yes</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="antutu_score">Score Antutu</label>
-                                            <input class="form-control" type="number" name="antutu_score" min="1" max="9999999" placeholder="ex: 167623" value="<?= (old('antutu_score')!=null)?old('antutu_score'):$smartphone['test_antutu']; ?>">
+                                            <input class="form-control" type="number" name="antutu_score" min="1" max="9999999" placeholder="ex: 167623" value="<?= (old('antutu_score') != null) ? old('antutu_score') : $smartphone['test_antutu']; ?>">
                                         </div>
                                     </div>
                                 </div>
