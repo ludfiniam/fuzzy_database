@@ -192,7 +192,7 @@
                                         <div class="form-group">
                                             <label for="resolusi_main_camera">Resolusi kamera belakang</label>
                                             <div class="input-group mb-3">
-                                                <input type="number" step="0.1" name="resolusi_main_camera" class="form-control" placeholder="VGA = 0.5" aria-describedby="basic-addon2" min="0.0" max="100.0" value="<?= (old('resolusi_main_camera') != null) ? old('resolusi_main_camera') : $smartphone['resolusi_main_camera']; ?>" required>
+                                                <input type="number" step="0.1" name="resolusi_main_camera" class="form-control" placeholder="VGA = 0.5" aria-describedby="basic-addon2" min="0.0" max="1000.0" value="<?= (old('resolusi_main_camera') != null) ? old('resolusi_main_camera') : $smartphone['resolusi_main_camera']; ?>" required>
                                                 <div class="input-group-append">
                                                     <span class="input-group-text" id="basic-addon2">MP</span>
                                                 </div>
@@ -213,7 +213,7 @@
                                         <div class="form-group">
                                             <label for="resolusi_front_camera">Resolusi kamera depan</label>
                                             <div class="input-group mb-3">
-                                                <input type="number" step="0.1" name="resolusi_front_camera" class="form-control" placeholder="VGA = 0.5" aria-describedby="basic-addon2" min="0.0" max="100.0" value="<?= (old('resolusi_front_camera') != null) ? old('resolusi_front_camera') : $smartphone['resolusi_selfie_camera']; ?>" required>
+                                                <input type="number" step="0.1" name="resolusi_front_camera" class="form-control" placeholder="VGA = 0.5" aria-describedby="basic-addon2" min="0.0" max="1000.0" value="<?= (old('resolusi_front_camera') != null) ? old('resolusi_front_camera') : $smartphone['resolusi_selfie_camera']; ?>" required>
                                                 <div class="input-group-append">
                                                     <span class="input-group-text" id="basic-addon2">MP</span>
                                                 </div>

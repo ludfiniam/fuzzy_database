@@ -8,7 +8,7 @@ class PhoneModel extends Model
 {
     protected $table = 't_smartphone';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['nama_smartphone', 'slug', 'merek', 'network', 'harga', 'tahun', 'tebal', 'berat', 'bahan_body', 'sim', 'tipe_sim', 'sim_stand', 'jenis_layar', 'jenis_protect_layar', 'resolution_layar', 'tipe_ui_os', 'jenis_chipset', 'nama_chipset', 'clock_speed_cpu', 'jumlah_core', 'jenis_gpu', 'nama_lengkap_gpu', 'internal_storage', 'ram', 'tipe_main_camera', 'resolusi_main_camera', 'selfie_camera', 'resolusi_selfie_camera', 'WLAN', 'bluetooth', 'infraret', 'nfc','radio', 'usb_tipe', 'fingerprint', 'face_sensor', 'tipe_batrai', 'kapasitas_batrai', 'tipe_charger', 'test_antutu', 'image1', 'image2', 'image3', 'id_seller'];
+    protected $allowedFields = ['nama_smartphone', 'slug', 'merek', 'network', 'harga', 'tahun', 'tebal', 'berat', 'bahan_body', 'sim', 'tipe_sim', 'sim_stand', 'jenis_layar', 'jenis_protect_layar', 'resolution_layar', 'tipe_ui_os', 'jenis_chipset', 'nama_chipset', 'clock_speed_cpu', 'jumlah_core', 'jenis_gpu', 'nama_lengkap_gpu', 'internal_storage', 'ram', 'tipe_main_camera', 'resolusi_main_camera', 'selfie_camera', 'resolusi_selfie_camera', 'WLAN', 'bluetooth', 'infrared', 'nfc','radio', 'usb_tipe', 'fingerprint', 'face_sensor', 'tipe_batrai', 'kapasitas_batrai', 'tipe_charger', 'test_antutu', 'image1', 'image2', 'image3', 'id_seller'];
 
     public function allSmartphonePaginationAdmin($id_seller)
     {
@@ -18,7 +18,7 @@ class PhoneModel extends Model
 
     public function allSmartphonePaginationForPublic($data_filter)
     {
-        $data = $this->select('t_smartphone.id as id,t_smartphone.slug as slug,nama_smartphone,merek,tahun,harga,t_account.full_name as nama_seller,image1,image2,image3')->join('t_account', 't_account.id=t_smartphone.id_seller');
+        $data = $this->select('t_smartphone.id as id,t_smartphone.slug as slug,nama_smartphone,merek,tahun,harga,t_account.full_name as nama_seller,image1,image2,image3')->join('t_account', 't_account.id=t_smartphone.id_seller')->where('t_account.active_account','active');
         if ($data_filter!="Yes") {
             $data = $data->orderBy('t_smartphone.id', 'DESC');
         }
@@ -34,7 +34,7 @@ class PhoneModel extends Model
 
     public function FindAllSmartphonePaginationForPublic($keyword,$data_filter)
     {
-        $data = $this->select('t_smartphone.id as id,t_smartphone.slug as slug,nama_smartphone,merek,tahun,harga,t_account.full_name as nama_seller,image1,image2,image3')->join('t_account', 't_account.id=t_smartphone.id_seller');
+        $data = $this->select('t_smartphone.id as id,t_smartphone.slug as slug,nama_smartphone,merek,tahun,harga,t_account.full_name as nama_seller,image1,image2,image3')->join('t_account', 't_account.id=t_smartphone.id_seller')->where('t_account.active_account','active');
         $data = $data->like('nama_smartphone', $keyword)->orLike('merek', $keyword)->orLike('t_account.full_name', $keyword);
         if ($data_filter!="Yes") {
             $data = $data->orderBy('t_smartphone.id', 'DESC');
@@ -197,8 +197,14 @@ class PhoneModel extends Model
             $Data = $Data->where('t_jenis_layar.id', $tipe_layar);
         }
         if ($proteksi_layar != 0) {
-            $Data = $Data->join('t_jenis_protect_layar', 't_jenis_protect_layar.nama_protect_layar = t_smartphone.jenis_protect_layar');
-            $Data = $Data->where('t_jenis_protect_layar.id', $proteksi_layar);
+            if ($proteksi_layar == "all_gorilaglass") {
+                $Data = $Data->join('t_jenis_protect_layar', 't_jenis_protect_layar.nama_protect_layar = t_smartphone.jenis_protect_layar');
+                $Data = $Data->like('t_smartphone.jenis_protect_layar','Gorilla Glass');
+            }
+            else {
+                $Data = $Data->join('t_jenis_protect_layar', 't_jenis_protect_layar.nama_protect_layar = t_smartphone.jenis_protect_layar');
+                $Data = $Data->where('t_jenis_protect_layar.id', $proteksi_layar);
+            }
         }
         if ($usb_tipe != 0) {
             $Data = $Data->join('t_jenis_usb', 't_jenis_usb.nama_usb = t_smartphone.usb_tipe');

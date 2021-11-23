@@ -71,8 +71,8 @@ class Index extends BaseController
     public function index()
     {
         $merek = $this->MerekModel->orderBy('id', 'RANDOM')->findAll();
-        $sample = $this->Data_smartphone->select('slug, nama_smartphone, merek, image1')->where('image1 != "default.jpg" and image1 != ""')->orderBy('t_smartphone.id', 'RANDOM')->findAll();
-        $seleer = $this->loginModel->select('full_name, slug, image_profile')->findAll();
+        $sample = $this->Data_smartphone->select('t_account.slug, nama_smartphone, merek, image1')->join('t_account', 't_account.id=t_smartphone.id_seller')->where('image1 != "default.jpg" and image1 != ""')->where('t_account.active_account', 'active')->orderBy('t_smartphone.id', 'RANDOM')->findAll();
+        $seleer = $this->loginModel->select('full_name, slug, image_profile')->where('t_account.active_account', 'active')->findAll();
         $data = [
             'merek' => $merek,
             'seller' => $seleer,

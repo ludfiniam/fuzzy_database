@@ -51,11 +51,11 @@ class Admin extends BaseController
 	protected $ui_hp;
 	protected $network = ['5G', '4G', '3G', '2G'];
 	protected $internal = ['4', '8', '16', '32', '64', '128', '256', '512'];
-	protected $ram = ['0.5', '1', '1.5', '2', '3', '4', '6', '8', '12'];
+	protected $ram = ['0.5', '1', '1.5', '2', '3', '4', '6', '8', '12', '16'];
 	protected $jml_sim = ['Dual', 'Single'];
 	protected $tipe_sim = ['Mini SIM', 'Micro SIM', 'Nano SIM'];
 	protected $sim_stand = ['Stand-by all', 'One-hybrit'];
-	protected $core_cpu = ['Single core', 'Dual core', 'Quad core', 'Octa core'];
+	protected $core_cpu = ['Single core', 'Dual core', 'Quad core', 'Octa core', 'Hexa core'];
 	protected $main_camera_tipe = ['None', 'Single', 'Double', 'Tripel', 'Quard'];
 	protected $front_camera_tipe = ['None', 'Single', 'Double', 'Tripel'];
 	protected $WLAN = ['Yes', 'No'];

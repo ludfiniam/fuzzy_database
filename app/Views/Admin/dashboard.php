@@ -66,7 +66,7 @@
                     </div>
                     <div class="row mb-3 d-flex justify-content-center">
                 <?php
-                                $col = 1;
+                                $col = 0;
                             }
                             $col++;
                         }

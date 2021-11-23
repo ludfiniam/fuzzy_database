@@ -31,7 +31,7 @@ function rupiah($angka)
                     <div class="row mb-2">
                         <div class="col">
                             <div class="row mb-3">
-                                <div class="col-md-3">
+                                <div class="col-md-3 d-flex align-items-center">
                                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                         <div class="carousel-inner">
                                             <div class="carousel-item active">

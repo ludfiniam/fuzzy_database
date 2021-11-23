@@ -236,6 +236,7 @@ function rupiah($angka)
 									<label for="proteksi_layar">Pelindung Layar</label>
 									<select class="form-control text-center" name="proteksi_layar" <?= session()->get('data_filter') == 'Yes' ? 'disabled' : ''; ?>>
 										<option value="0">All</option>
+										<option value="all_gorilaglass">All Gorila Glass</option>
 										<?php foreach ($pelindung_layar as $protect_layar) {
 										?>
 											<option value="<?= $protect_layar['id']; ?>" <?= session()->get('fk_proteksi_layar') == $protect_layar['id'] ? 'selected' : ''; ?>><?= $protect_layar['nama_protect_layar']; ?></option>
@@ -381,7 +382,7 @@ function rupiah($angka)
 													<div class="col-1 d-flex align-items-center justify-content-center mb-3">
 														<h4 class="text-center"><?= $a; ?></h4>
 													</div>
-													<div class="col-xs-3 col-md-3 mb-3">
+													<div class="col-xs-3 col-md-3 mb-3 d-flex align-items-center">
 														<div id="carouselExampleControls<?= $data; ?>" class="carousel slide" data-bs-ride="carousel">
 															<div class="carousel-inner">
 																<div class="carousel-item active">
